@@ -24,6 +24,19 @@ class DraggableParallelogram {
       
     }
     
+    getCoord() {
+
+        let newX, newY, auxX, auxY
+        auxX = mouseX - windowWidth * 0.5
+        auxY = mouseY - windowHeight * 0.5
+        
+        newX = auxX*cos(this.angle) + auxY*sin(this.angle)
+        newY = -auxX*sin(this.angle) + auxY*cos(this.angle)
+        
+        return [newX, newY]
+        
+    }
+
     currentMouseX() {
       return mouseX - windowWidth * 0.5;
     }
@@ -66,7 +79,7 @@ class DraggableParallelogram {
     
     over() {
       // Is mouse over object
-      if (this.isInside(this.currentMouseX(), this.currentMouseY())) {
+      if (this.isInside(this.getCoord()[0], this.getCoord()[1])) {
         this.rollover = true;
       } else {
         this.rollover = false;
@@ -76,8 +89,8 @@ class DraggableParallelogram {
     update() {
       // Adjust location if being dragged
       if (this.dragging) {
-        this.x = this.currentMouseX() + this.offsetX;
-        this.y = this.currentMouseY() + this.offsetY;
+        this.x = this.getCoord()[0] + this.offsetX;
+        this.y = this.getCoord()[1] + this.offsetY;
         
         this.p1 = [this.x, this.y];
         this.p2 = [this.x + this.w, this.y];
@@ -108,13 +121,13 @@ class DraggableParallelogram {
   
     pressed() {
       // Did I click on the rectangle?
-      var cenas = this.isInside(this.currentMouseX(), this.currentMouseY());
+      var cenas = this.isInside(this.getCoord()[0], this.getCoord()[1]);
       console.log(cenas);
       if (cenas) {
         this.dragging = true;
         // If so, keep track of relative location of click to corner of rectangle
-        this.offsetX = this.x - this.currentMouseX();
-        this.offsetY = this.y - this.currentMouseY();
+        this.offsetX = this.x - this.getCoord()[0];
+        this.offsetY = this.y - this.getCoord()[1];
       
       }
     }

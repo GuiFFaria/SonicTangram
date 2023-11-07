@@ -1,12 +1,12 @@
 
 class DraggableTriangle {
   
-    constructor(x, y, c1, c2, ang, chosenColor) {
+    constructor(x, y, c1, c2, angle, chosenColor) {
       
       this.dragging = false; // Is the object being dragged?
       this.rollover = false; // Is the mouse over the ellipse?
 
-      this.ang = ang
+      this.angle = angle
 
       this.x = x ;
       this.y = y ;
@@ -22,16 +22,19 @@ class DraggableTriangle {
       
     }
     
-    local() {
-      const matrix = drawingContext.getTransform();
-      const localCoord = matrix
-                        .inverse()
-                        .transformPoint(
-                          new DOMPoint(
-                            mouseX * pixelDensity(),
-                            mouseY * pixelDensity())
-                                      );
-    return localCoord;
+    getCoord() {
+
+        let newX, newY, auxX, auxY
+        auxX = mouseX - windowWidth * 0.5
+        auxY = mouseY - windowHeight * 0.5
+        
+        
+        newX = auxX*cos(this.angle) + auxY*sin(this.angle)
+        newY = -auxX*sin(this.angle) + auxY*cos(this.angle)
+        
+        
+        return [newX, newY]
+        
     }
     
     currentMouseX() {
@@ -72,7 +75,7 @@ class DraggableTriangle {
     
     over() {
       // Is mouse over object
-      if (this.isInside(this.currentMouseX(), this.currentMouseY())) {
+      if (this.isInside(this.getCoord()[0], this.getCoord()[1])) {
         this.rollover = true;
       } else {
         this.rollover = false;
@@ -82,8 +85,8 @@ class DraggableTriangle {
     update() {
       // Adjust location if being dragged
       if (this.dragging) {
-        this.x = this.currentMouseX() + this.offsetX;
-        this.y = this.currentMouseY() + this.offsetY;
+        this.x = this.getCoord()[0] + this.offsetX;
+        this.y = this.getCoord()[1] + this.offsetY;
       }
     }
   
@@ -100,18 +103,18 @@ class DraggableTriangle {
       
       push()
       translate(windowWidth * 0.5, windowHeight * 0.5)
-      rotate(this.ang)
+      rotate(this.angle)
       triangle(this.x, this.y, this.x + this.c1, this.y, this.x, this.y + this.c2);
       pop() 
     }
   
     pressed() {
       // Did I click on the rectangle?
-      if (this.isInside(this.currentMouseX(), this.currentMouseY())) {
+      if (this.isInside(this.getCoord()[0], this.getCoord()[1])) {
         this.dragging = true;
         // If so, keep track of relative location of click to corner of rectangle
-        this.offsetX = this.x - this.currentMouseX();
-        this.offsetY = this.y - this.currentMouseY();
+        this.offsetX = this.x -this.getCoord()[0];
+        this.offsetY = this.y - this.getCoord()[1];
       }
     }
   

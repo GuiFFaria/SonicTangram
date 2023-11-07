@@ -20,12 +20,11 @@ function setup() {
     
   shape3 = new DraggableSquare(0,0,h/4,h/4, 45, "yellow");
   
-  
   shape4 = new DraggableTriangle(h/4, 0, h/4, h/4, 45, "pink");
   
-   shape5 = new DraggableTriangle(0, 0, h/4, h/4, 135, "green");
+  shape5 = new DraggableTriangle(0, 0, h/4, h/4, 135, "green"); 
  
-  shape6 = new DraggableParallelogram(0,0, widthTangram/2, widthTangram/4, 270, "blue");
+  shape6 = new DraggableParallelogram(-widthTangram/2,0, widthTangram/2, widthTangram/4, 0, "blue");
   
   shape7 = new DraggableTriangle(-widthTangram/2,-widthTangram/2, widthTangram/2, widthTangram/2, -90, "purple");
   
@@ -41,7 +40,7 @@ function draw() {
   shape2.display();
   shape3.display();
   shape4.display();
-  shape5.display();
+  shape5.display(); 
   shape6.display();
   shape7.display();
 

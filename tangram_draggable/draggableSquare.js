@@ -1,9 +1,9 @@
 class DraggableSquare {
-    constructor(x, y, w, h, ang, chosenColor) {
+    constructor(x, y, w, h, angle, chosenColor) {
       this.dragging = false; // Is the object being dragged?
       this.rollover = false; // Is the mouse over the ellipse?
 
-      this.ang = ang;
+      this.angle = angle;
 
       this.x = x;
       this.y = y;
@@ -13,10 +13,23 @@ class DraggableSquare {
 
       this.offsetX = 0;
       this.offsetY = 0;
-      
+
       this.chosenColor = chosenColor
     }
     
+    getCoord() {
+
+        let newX, newY, auxX, auxY
+        auxX = mouseX - windowWidth * 0.5
+        auxY = mouseY - windowHeight * 0.5
+        
+        newX = auxX*cos(this.angle) + auxY*sin(this.angle)
+        newY = -auxX*sin(this.angle) + auxY*cos(this.angle)
+        
+        return [newX, newY]
+        
+    }
+
     currentMouseX() {
       return mouseX - windowWidth * 0.5;
     }
@@ -27,7 +40,7 @@ class DraggableSquare {
     
     over() {
       // Is mouse over object
-      if (this.currentMouseX() > this.x && this.currentMouseX() < this.x + this.w && this.currentMouseY() > this.y && this.currentMouseY() < this.y + this.h) {
+      if (this.getCoord()[0] > this.x && this.getCoord()[0] < this.x + this.w && this.getCoord()[1] > this.y && this.getCoord()[1] < this.y + this.h) {
         this.rollover = true;
       } else {
         this.rollover = false;
@@ -37,8 +50,8 @@ class DraggableSquare {
     update() {
       // Adjust location if being dragged
       if (this.dragging) {
-        this.x = this.currentMouseX() + this.offsetX;
-        this.y = this.currentMouseY() + this.offsetY;
+        this.x = this.getCoord()[0] + this.offsetX;
+        this.y = this.getCoord()[1] + this.offsetY;
       }
     }
   
@@ -54,18 +67,18 @@ class DraggableSquare {
       }
       push()
       translate(windowWidth*0.5, windowHeight*0.5)
-      rotate(this.ang)
+      rotate(this.angle)
       rect(this.x, this.y, this.w, this.h);
       pop()
     }
   
     pressed() {
       // Did I click on the rectangle?
-      if (this.currentMouseX() > this.x && this.currentMouseX() < this.x + this.w && this.currentMouseY() > this.y && this.currentMouseY() < this.y + this.h) {
+      if (this.getCoord()[0] > this.x && this.getCoord()[0] < this.x + this.w && this.getCoord()[1] > this.y && this.getCoord()[1] < this.y + this.h) {
         this.dragging = true;
         // If so, keep track of relative location of click to corner of rectangle
-        this.offsetX = this.x - this.currentMouseX();
-        this.offsetY = this.y - this.currentMouseY();
+        this.offsetX = this.x - this.getCoord()[0];
+        this.offsetY = this.y - this.getCoord()[1];
       }
     }
   
