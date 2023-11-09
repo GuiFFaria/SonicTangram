@@ -17,8 +17,8 @@ class DraggableParallelogram {
 
       this.p1 = [this.x, this.y];
       this.p2 = [this.x + this.w, this.y];
-      this.p3 = [this.x + this.w + this.h, this.y + this.h];
-      this.p4 = [this.x + this.h, this.y + this.h];
+      this.p3 = [this.x + this.w + this.h, this.y - this.h];
+      this.p4 = [this.x + this.h, this.y - this.h];
 
       this.chosenColor = chosenColor;
       
@@ -94,8 +94,8 @@ class DraggableParallelogram {
         
         this.p1 = [this.x, this.y];
         this.p2 = [this.x + this.w, this.y];
-        this.p3 = [this.x + this.w + this.h, this.y + this.h];
-        this.p4 = [this.x + this.h, this.y + this.h];
+        this.p3 = [this.x + this.w + this.h, this.y - this.h];
+        this.p4 = [this.x + this.h, this.y - this.h];
         
        
       }
@@ -115,7 +115,8 @@ class DraggableParallelogram {
       push()
       translate(windowWidth * 0.5, windowHeight * 0.5)
       rotate(this.angle)
-      quad(this.x, this.y, this.x + this.h, this.y + this.h, this.x + this.w + this.h, this.y + this.h, this.x + this.w, this.y);
+      noStroke();
+      quad(this.x, this.y, this.x + this.h, this.y - this.h, this.x + this.w + this.h, this.y - this.h, this.x + this.w, this.y);
       pop()
     }
   

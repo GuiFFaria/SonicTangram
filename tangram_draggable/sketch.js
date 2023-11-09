@@ -1,32 +1,42 @@
 let shape1, shape2, shape3, shape4, shape5, shape6, shape7
-
+let color1, color2, color3, color4, color5, color6, color7
 
 
 function setup() {
+
   angleMode(DEGREES);
   createCanvas(windowWidth, windowHeight);
   let widthTangram = 200;
   let h = sqrt(pow(widthTangram, 2) * 2);
   
-  shape1 = new DraggableTriangle(0, 20, 100, 100, 0, "red");
+  //color palette
+  color1 = '#8ecae6'
+  color2 = '#219ebc'
+  color3 = '#126782'
+  color4 = '#023047'
+  color5 = '#ffb703'
+  color6 = '#fd9e02'
+  color7 = '#fb8500'
 
-  shape2 = new DraggableSquare(0, 20, 50, 50, 0, "green");
-    
-  shape3 = new DraggableParallelogram(20,0,70,30, 0, "yellow");
-  
-  shape1 = new DraggableTriangle(0, 0, h/2, h/2, -135, "red");
+  /* shape1 = new DraggableTriangle(0, 20, 100, 100, 0, color1);
 
-  shape2 = new DraggableTriangle(0, 0, h/2, h/2, -45, "orange");
+  shape2 = new DraggableSquare(0, 20, 50, 50, 0, color2);
     
-  shape3 = new DraggableSquare(0,0,h/4,h/4, 45, "yellow");
+  shape3 = new DraggableParallelogram(20,0,70,30, 0, color3); */
   
-  shape4 = new DraggableTriangle(h/4, 0, h/4, h/4, 45, "pink");
+  shape1 = new DraggableTriangle(0, 0, h/2, h/2, -135, color1);
+
+  shape2 = new DraggableTriangle(0, 0, h/2, h/2, -45, color2);
+    
+  shape3 = new DraggableSquare(0,0,h/4,h/4, 45, color3);
   
-  shape5 = new DraggableTriangle(0, 0, h/4, h/4, 135, "green"); 
+  shape4 = new DraggableTriangle(h/4, 0, h/4, h/4, 45, color4);
+  
+  shape5 = new DraggableTriangle(0, 0, h/4, h/4, 135, color5); 
  
-  shape6 = new DraggableParallelogram(-widthTangram/2,0, widthTangram/2, widthTangram/4, 0, "blue");
+  shape6 = new DraggableParallelogram(-widthTangram/4,-widthTangram/4, widthTangram/2, widthTangram/4, 270, color6);
   
-  shape7 = new DraggableTriangle(-widthTangram/2,-widthTangram/2, widthTangram/2, widthTangram/2, -90, "purple");
+  shape7 = new DraggableTriangle(-widthTangram/2,-widthTangram/2, widthTangram/2, widthTangram/2, -90, color7);
   
   
 }

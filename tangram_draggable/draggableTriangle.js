@@ -104,6 +104,7 @@ class DraggableTriangle {
       push()
       translate(windowWidth * 0.5, windowHeight * 0.5)
       rotate(this.angle)
+      noStroke();
       triangle(this.x, this.y, this.x + this.c1, this.y, this.x, this.y + this.c2);
       pop() 
     }

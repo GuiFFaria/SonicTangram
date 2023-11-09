@@ -68,6 +68,7 @@ class DraggableSquare {
       push()
       translate(windowWidth*0.5, windowHeight*0.5)
       rotate(this.angle)
+      noStroke();
       rect(this.x, this.y, this.w, this.h);
       pop()
     }
