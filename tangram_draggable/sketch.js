@@ -1,7 +1,10 @@
 let shape1, shape2, shape3, shape4, shape5, shape6, shape7
 let color1, color2, color3, color4, color5, color6, color7
+let menu
 
-
+function preload() {
+  let infoImg = loadImage('info-icon.png');
+}
 function setup() {
 
   angleMode(DEGREES);
@@ -10,6 +13,7 @@ function setup() {
   let h = sqrt(pow(widthTangram, 2) * 2);
   
   //color palette
+  
   color1 = '#8ecae6'
   color2 = '#219ebc'
   color3 = '#126782'
@@ -18,11 +22,8 @@ function setup() {
   color6 = '#fd9e02'
   color7 = '#fb8500'
 
-  /* shape1 = new DraggableTriangle(0, 20, 100, 100, 0, color1);
-
-  shape2 = new DraggableSquare(0, 20, 50, 50, 0, color2);
-    
-  shape3 = new DraggableParallelogram(20,0,70,30, 0, color3); */
+  
+  menu = new DraggableMenu(widthTangram, -widthTangram, 30, "red");
   
   shape1 = new DraggableTriangle(0, 0, h/2, h/2, -135, color1);
 
@@ -36,7 +37,7 @@ function setup() {
  
   shape6 = new DraggableParallelogram(-widthTangram/4,-widthTangram/4, widthTangram/2, widthTangram/4, 270, color6);
   
-  shape7 = new DraggableTriangle(-widthTangram/2,-widthTangram/2, widthTangram/2, widthTangram/2, -90, color7);
+  shape7 = new DraggableTriangle(-widthTangram/2,-widthTangram/2, widthTangram/2, widthTangram/2, -90, color7); 
   
   
 }
@@ -46,6 +47,7 @@ function setup() {
 
 function draw() {
   background(255)
+  // image(infoImg, 0, 0)
   shape1.display();
   shape2.display();
   shape3.display();
@@ -53,6 +55,7 @@ function draw() {
   shape5.display(); 
   shape6.display();
   shape7.display();
+  menu.display();
 
 
 
@@ -67,6 +70,7 @@ function mousePressed() {
   shape5.pressed();
   shape6.pressed();
   shape7.pressed();
+  menu.pressed();
 }
 
 function mouseReleased() {
@@ -77,4 +81,5 @@ function mouseReleased() {
   shape5.released();
   shape6.released();
   shape7.released();
+  menu.released();
 }
