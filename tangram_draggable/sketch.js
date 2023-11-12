@@ -1,9 +1,9 @@
 let shape1, shape2, shape3, shape4, shape5, shape6, shape7
 let color1, color2, color3, color4, color5, color6, color7
-let menu
+let menu, infoImg
 
 function preload() {
-  let infoImg = loadImage('info-icon.png');
+  infoImg = loadImage('icon.png');
 }
 function setup() {
 
@@ -23,7 +23,7 @@ function setup() {
   color7 = '#fb8500'
 
   
-  menu = new DraggableMenu(widthTangram, -widthTangram, 30, "red");
+  menu = new DraggableMenu(widthTangram, -widthTangram, 20, "red", infoImg);
   
   shape1 = new DraggableTriangle(0, 0, h/2, h/2, -135, color1);
 

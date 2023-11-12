@@ -1,7 +1,7 @@
 
 class DraggableMenu {
   
-    constructor(x, y, r, chosenColor) {
+    constructor(x, y, r, chosenColor, img) {
       
       this.dragging = false; // Is the object being dragged?
       this.rollover = false; // Is the mouse over the ellipse?
@@ -17,7 +17,9 @@ class DraggableMenu {
       this.offsetY = 0;
 
       this.chosenColor = chosenColor;
-      
+      this.a = createA('http://p5js.org/', '‎  ‎ ');
+
+      this.img = img
     }
     
     getCoord() {
@@ -59,6 +61,7 @@ class DraggableMenu {
       if (this.dragging) {
         this.x = this.getCoord()[0] + this.offsetX;
         this.y = this.getCoord()[1] + this.offsetY;
+        //this.a.position(this.x, this.y);
       }
     }
     
@@ -73,6 +76,7 @@ class DraggableMenu {
       ellipse(this.x, this.y, this.r2, this.r2);
       pop()
     }
+
     show() {
       //stroke(0);
       // Different fill based on state
@@ -88,11 +92,14 @@ class DraggableMenu {
       else {
         fill(color(this.chosenColor));
       }
-      fill("#212A3E")
+      //fill("#212A3E")
+      fill("white")
       push()
       translate(windowWidth * 0.5, windowHeight * 0.5)
+      this.a.position(this.x + windowWidth * 0.5 - (this.r/2), this.y + windowHeight * 0.5 - (this.r/2))
       noStroke();
       ellipse(this.x, this.y, this.r, this.r);
+      image(this.img, this.x - (this.img.width/2), this.y - (this.img.height/2));
       pop() 
     }
   
@@ -114,7 +121,6 @@ class DraggableMenu {
     released() {
       // Quit dragging
       this.dragging = false;
-      console.log("here")
        
 
     }
