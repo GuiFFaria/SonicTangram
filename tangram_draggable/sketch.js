@@ -1,9 +1,12 @@
 let shape1, shape2, shape3, shape4, shape5, shape6, shape7
 let color1, color2, color3, color4, color5, color6, color7
 let menu
+var melody
+var melodyVolume = 0.1;
 
 function preload() {
   let infoImg = loadImage('info-icon.png');
+  melody = loadSound('/sounds/melody1.mp3');
 }
 function setup() {
 
@@ -12,6 +15,8 @@ function setup() {
   let widthTangram = 200;
   let h = sqrt(pow(widthTangram, 2) * 2);
   
+  melody.setVolume(0.1, 1);
+  melody.loop();
   //color palette
   
   color1 = '#8ecae6'
@@ -25,19 +30,19 @@ function setup() {
   
   menu = new DraggableMenu(widthTangram, -widthTangram, 30, "red");
   
-  shape1 = new DraggableTriangle(0, 0, h/2, h/2, -135, color1);
+  shape1 = new DraggableTriangle(0, 0, h/2, h/2, -135, color1 , "/sounds/p1A5.mp3");
 
-  shape2 = new DraggableTriangle(0, 0, h/2, h/2, -45, color2);
+  shape2 = new DraggableTriangle(0, 0, h/2, h/2, -45, color2, "/sounds/p2C5.mp3");
     
-  shape3 = new DraggableSquare(0,0,h/4,h/4, 45, color3);
+  shape3 = new DraggableSquare(0,0,h/4,h/4, 45, color3, "/sounds/p3E5.mp3");
   
-  shape4 = new DraggableTriangle(h/4, 0, h/4, h/4, 45, color4);
+  shape4 = new DraggableTriangle(h/4, 0, h/4, h/4, 45, color4, "/sounds/p4E4.mp3");
   
-  shape5 = new DraggableTriangle(0, 0, h/4, h/4, 135, color5); 
+  shape5 = new DraggableTriangle(0, 0, h/4, h/4, 135, color5, "/sounds/p5C7.mp3"); 
  
-  shape6 = new DraggableParallelogram(-widthTangram/4,-widthTangram/4, widthTangram/2, widthTangram/4, 270, color6);
+  shape6 = new DraggableParallelogram(-widthTangram/4,-widthTangram/4, widthTangram/2, widthTangram/4, 270, color6, "/sounds/p6g6.mp3");
   
-  shape7 = new DraggableTriangle(-widthTangram/2,-widthTangram/2, widthTangram/2, widthTangram/2, -90, color7); 
+  shape7 = new DraggableTriangle(-widthTangram/2,-widthTangram/2, widthTangram/2, widthTangram/2, -90, color7, "/sounds/p7D6.mp3"); 
   
   
 }
