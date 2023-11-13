@@ -1,26 +1,27 @@
 let message = 'I am a cage in search of a bird!';
 let messageX;
 let messageY;
-const xSpeed = 0.8;
-const ySpeed = 0.02;
-const amplitude = 50;
+let xSpeed = 2;
+let ySpeed = 0.02;
+const amplitude = 20;
 const verticalLetterSpacing = 10;
+let font;
 
 function preload() {
-
+  font = loadFont('font/Outfit-Regular.ttf');
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  textFont();
+  textFont(font);
 
-  messageX = width;
-  messageY = height / 2;
+  messageX = width / 2;
+  messageY = height / 4;
 }
 
 function draw() {
   background(32);
-  fill(255, 100, 25);
+  fill(255, 255, 255);
 
   textSize(30);
 
@@ -33,16 +34,17 @@ function draw() {
     text(message[i], letterX, letterY);
   }
 
-  // Update position
   messageX -= xSpeed;
 
-  // Check boundaries
-  if (messageX < -textWidth(message)) {
-    messageX = windowWidth;
-    messageY += amplitude * 2; // Adjust this value to control how far down it moves
+  if (messageX + textWidth(message) > width || messageX < 0) {
+    xSpeed *= -1;
+    messageX = constrain(messageX, 0, width - textWidth(message)); // Manter-se detro dos limites
+    messageY += verticalLetterSpacing;
   }
 
-  if (messageY > windowHeight) {
-    messageY = 0;
+  if (messageY + verticalLetterSpacing > height || messageY < 0) {
+    ySpeed *= -1;
+    messageY = constrain(messageY, 0, height - verticalLetterSpacing); // Manter-se dentro dos limites
+    messageX += xSpeed;
   }
 }
