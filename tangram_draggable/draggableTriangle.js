@@ -20,10 +20,9 @@ class DraggableTriangle {
       this.offsetX = 0;
       this.offsetY = 0;
 
-      this.sounds[0] = loadSound(sound1); 
+      this.sounds[0] = loadSound(sound1);  
 
       this.chosenColor = chosenColor;
-
 
       
     }

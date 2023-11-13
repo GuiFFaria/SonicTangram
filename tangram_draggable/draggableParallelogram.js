@@ -68,9 +68,7 @@ class DraggableParallelogram {
       let area4 = this.triangleArea (p, this.p2, this.p1);
       
       let res = area1 + area2 + area3 + area4;
-      console.log("total area: " + area);
       
-      console.log("res: " + res);
       if (area == res) {
         return true;
       }
@@ -128,7 +126,7 @@ class DraggableParallelogram {
     pressed() {
       // Did I click on the rectangle?
       var cenas = this.isInside(this.getCoord()[0], this.getCoord()[1]);
-      console.log(cenas);
+  
       if (cenas) {
         this.dragging = true;
         // If so, keep track of relative location of click to corner of rectangle

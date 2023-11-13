@@ -31,7 +31,7 @@ function setup() {
   
   menu = new DraggableMenu(widthTangram, -widthTangram, 30, "red", infoImg);
   
-  shape1 = new DraggableTriangle(0, 0, h/2, h/2, -135, color1 , "/sounds/p1A5.mp3");
+  shape1 = new DraggableTriangle(0, 0, h/2, h/2, -135, color1 , "/sounds/p1A4.mp3");
 
   shape2 = new DraggableTriangle(0, 0, h/2, h/2, -45, color2, "/sounds/p2C5.mp3");
     
