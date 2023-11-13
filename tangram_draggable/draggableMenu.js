@@ -17,7 +17,7 @@ class DraggableMenu {
     this.offsetY = 0;
 
     this.chosenColor = chosenColor;
-    this.a = createA('http://p5js.org/', '‎  ‎ ');
+    this.a = createA('composicao.html', '‎  ‎ ');
 
     this.img = img
   }
