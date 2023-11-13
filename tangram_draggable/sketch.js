@@ -1,11 +1,12 @@
 let shape1, shape2, shape3, shape4, shape5, shape6, shape7
 let color1, color2, color3, color4, color5, color6, color7
 let menu
+let infoImg
 var melody
 var melodyVolume = 0.1;
 
 function preload() {
-  let infoImg = loadImage('info-icon.png');
+  infoImg = loadImage('images/icon.png');
   melody = loadSound('/sounds/melody1.mp3');
 }
 function setup() {
@@ -28,7 +29,7 @@ function setup() {
   color7 = '#fb8500'
 
   
-  menu = new DraggableMenu(widthTangram, -widthTangram, 30, "red");
+  menu = new DraggableMenu(widthTangram, -widthTangram, 30, "red", infoImg);
   
   shape1 = new DraggableTriangle(0, 0, h/2, h/2, -135, color1 , "/sounds/p1A5.mp3");
 
