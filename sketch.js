@@ -1,8 +1,8 @@
 let message = 'I am a cage in search of a bird!';
 let messageX; // posição da frase em x
 let messageY; // posição da frase em y
-let velX = 5; //velocidade do movimento em x
-let velY = 0; //velocidade do movimento em y
+let velX = 5; //velocidade do movimento
+let velY = 0; //velocidade do movimento
 let xSpeed = 2; // velocidade horizontal
 let ySpeed = 0.02; // velocidade da ondulação
 const amplitude = 10;
@@ -16,7 +16,6 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   textFont(font);
-
   // centralizar a frase
   messageX = width / 3;
   messageY = height * 0.95;
@@ -55,6 +54,7 @@ function draw() {
     else {
       velY = -5;
       velX = 0;
+     
     }
   }
 
