@@ -17,7 +17,7 @@ class DraggableMenu {
     this.offsetY = 0;
 
     this.chosenColor = chosenColor;
-    this.a = createA('composicao.html', '‎  ‎ ');
+    this.a = createA('game.html', '‎  ‎ ');
 
     this.img = img
   }
