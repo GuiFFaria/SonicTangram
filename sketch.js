@@ -1,8 +1,8 @@
 let message = 'I am a cage in search of a bird!';
 let messageX; // posição da frase em x
 let messageY; // posição da frase em y
-let velX = 5;
-let velY = 0;
+let velX = 5; //velocidade do movimento em x
+let velY = 0; //velocidade do movimento em y
 let xSpeed = 2; // velocidade horizontal
 let ySpeed = 0.02; // velocidade da ondulação
 const amplitude = 10;
@@ -49,6 +49,7 @@ function draw() {
     if (messageX <= 0) {
       velY = 5;
       velX = 0;
+     
     }
     // Se atingir a extremidade direita, mova para cima
     else {
