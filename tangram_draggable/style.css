@@ -66,7 +66,7 @@ body{
     justify-content: center;
 }
 
-.popup .popuptext{
+.popup .popupText{
     visibility: visible;
     width: 30%;
     background-color: #dadada;
@@ -80,13 +80,5 @@ body{
 .popup .hide{
     visibility: hidden;
     animation: fadeIn 1s;
-}
-
-.circle{
-    height: 40px;  
-    width: 40px; 
-    border: solid 1px;  
-    border-radius: 50%;  
-    display: inline-block;
-    /* background-color: aqua; */
+    z-index: -1;
 }
