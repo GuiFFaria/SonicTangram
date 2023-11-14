@@ -1,10 +1,10 @@
 let message = 'I am a cage in search of a bird!';
-let messageX; //posição da frase em x
-let messageY; //posição da frase em y
-let velX =1;
-let velY =0;
-let xSpeed = 2; //velociade horizontal
-let ySpeed = 0.02; //velocidade da ondulação
+let messageX; // posição da frase em x
+let messageY; // posição da frase em y
+let velX = 5;
+let velY = 0;
+let xSpeed = 2; // velocidade horizontal
+let ySpeed = 0.02; // velocidade da ondulação
 const amplitude = 10;
 const verticalLetterSpacing = 10;
 let font;
@@ -17,9 +17,9 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   textFont(font);
 
-//centrar a frase
+  // centralizar a frase
   messageX = width / 3;
-  messageY = height*0.95;
+  messageY = height * 0.95;
 }
 
 function draw() {
@@ -36,50 +36,42 @@ function draw() {
 
     text(message[i], letterX, letterY);
   }
+
+  // Atualizar posição da frase
   messageX += velX;
   messageY += velY;
 
+  // Quando atinge a extremidade direita ou esquerda
   if (messageX + textWidth(message) > width || messageX < 0) {
-   // messageX = window.innerWidth - text.offsetWidth;
-    messageX = constrain(messageX, 0, width - textWidth(message)); // Manter-se detro dos limites
-    messageY += verticalLetterSpacing;
-    velX = 0;
-    velY = 0.5;
+    messageX = constrain(messageX, 0, width - textWidth(message)); // Manter-se dentro dos limites
+
+    // Se atingir a extremidade esquerda, mova para baixo
+    if (messageX <= 0) {
+      velY = 5;
+      velX = 0;
+    }
+    // Se atingir a extremidade direita, mova para cima
+    else {
+      velY = -5;
+      velX = 0;
+    }
   }
+
+  // Quando atinge a extremidade superior ou inferior
   if (messageY + verticalLetterSpacing > height || messageY < 0) {
-  //  messageY = window.innerHeight - text.offsetHeight;
     messageY = constrain(messageY, 0, height - verticalLetterSpacing); // Manter-se dentro dos limites
-    messageX += velX;
-    
-    velX = -0.5;
-    velY = 0;
-  }
-  
-  if (messageX < 0) {
-    messageX = 0;
-    velX = 0;
-    velY = -0.5;
-  }
-  if (messageY < 0) {
-    messageY = 0;
-    velX = 0.5;
-    velY = 0;
-  }
 
-
+    // Se atingir a parte superior, mova para a esquerda
+    if (messageY <= 0) {
+      velX = -5;
+      velY = 0;
+    }
+    // Se atingir a parte inferior, mova para a direita
+    else {
+      velX = 5;
+      velY = 0;
+    }
+  }
 }
-/*
-  messageX -= xSpeed;
 
-  if (messageX + textWidth(message) > width || messageX < 0) {
-    xSpeed *= -1;
-    messageX = constrain(messageX, 0, width - textWidth(message)); // Manter-se detro dos limites
-    messageY += verticalLetterSpacing;
-  }
-
-  if (messageY + verticalLetterSpacing > height || messageY < 0) {
-    ySpeed *= -1;
-    messageY = constrain(messageY, 0, height - verticalLetterSpacing); // Manter-se dentro dos limites
-    messageX += xSpeed;
-  }*/
 
