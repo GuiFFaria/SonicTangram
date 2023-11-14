@@ -3,7 +3,7 @@ class DraggableTriangle {
 
     sounds = new Array(1);
 
-    constructor(x, y, c1, c2, angle, chosenColor, sound1) {
+    constructor(x, y, c1, c2, angle, chosenColor, sound1, sound2, sound3) {
       
       this.dragging = false; // Is the object being dragged?
       this.rollover = false; // Is the mouse over the ellipse?
@@ -20,7 +20,9 @@ class DraggableTriangle {
       this.offsetX = 0;
       this.offsetY = 0;
 
-      this.sounds[0] = loadSound(sound1);  
+      this.sounds[0] = loadSound(sound1);
+      this.sounds[1] = loadSound(sound2);
+      this.sounds[2] = loadSound(sound3);  
 
       this.chosenColor = chosenColor;
 
@@ -121,15 +123,21 @@ class DraggableTriangle {
         // If so, keep track of relative location of click to corner of rectangle
         this.offsetX = this.x -this.getCoord()[0];
         this.offsetY = this.y - this.getCoord()[1];
-        this.sounds[0].setVolume(1);
-        this.sounds[0].loop();
+
+        this.rand = Math.floor(Math.random() * 3);
+
+        this.sounds[this.rand].setVolume(1);
+        this.sounds[this.rand].loop();
       }
     }
   
     released() {
       // Quit dragging
       this.dragging = false;
+      console.log(this.rand);
       this.sounds[0].stop();
+      this.sounds[1].stop();
+      this.sounds[2].stop();
     }
     
     display() {

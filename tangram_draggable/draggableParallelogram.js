@@ -2,8 +2,9 @@ class DraggableParallelogram {
   
 
     sounds = new Array(1);
+    rand;
 
-    constructor(x, y, w, h, angle, chosenColor, sound1) {
+    constructor(x, y, w, h, angle, chosenColor, sound1, sound2, sound3) {
       this.dragging = false; // Is the object being dragged?
       this.rollover = false; // Is the mouse over the ellipse?
 
@@ -26,6 +27,8 @@ class DraggableParallelogram {
       this.chosenColor = chosenColor;
 
       this.sounds[0] = loadSound(sound1);
+      this.sounds[1] = loadSound(sound2);
+      this.sounds[2] = loadSound(sound3);
       
     }
     
@@ -133,8 +136,10 @@ class DraggableParallelogram {
         this.offsetX = this.x - this.getCoord()[0];
         this.offsetY = this.y - this.getCoord()[1];
 
-        this.sounds[0].setVolume(1);
-        this.sounds[0].loop();
+        this.rand = Math.floor(Math.random() * 3);
+
+        this.sounds[this.rand].setVolume(1);
+        this.sounds[this.rand].loop();
       
       }
     }
@@ -143,6 +148,8 @@ class DraggableParallelogram {
       // Quit dragging
       this.dragging = false;
       this.sounds[0].stop();
+      this.sounds[1].stop();
+      this.sounds[2].stop();
     }
     
     display() {

@@ -31,19 +31,19 @@ function setup() {
   
   menu = new DraggableMenu(widthTangram, -widthTangram, 30, "red", infoImg);
   
-  shape1 = new DraggableTriangle(0, 0, h/2, h/2, -135, color1 , "/sounds/p1A4.mp3");
+  shape1 = new DraggableTriangle(0, 0, h/2, h/2, -135, color1 , "/sounds/p1A4.mp3", "/sounds/p1A5_.mp3", "/sounds/p1A5.mp3");
 
-  shape2 = new DraggableTriangle(0, 0, h/2, h/2, -45, color2, "/sounds/p2C5.mp3");
+  shape2 = new DraggableTriangle(0, 0, h/2, h/2, -45, color2, "/sounds/p2B5.mp3", "/sounds/p2C4.mp3", "/sounds/p2C5.mp3");
     
-  shape3 = new DraggableSquare(0,0,h/4,h/4, 45, color3, "/sounds/p3E5.mp3");
+  shape3 = new DraggableSquare(0,0,h/4,h/4, 45, color3, "/sounds/p3D3.mp3", "/sounds/p3E5.mp3", "/sounds/p3F4.mp3");
   
-  shape4 = new DraggableTriangle(h/4, 0, h/4, h/4, 45, color4, "/sounds/p4E4.mp3");
+  shape4 = new DraggableTriangle(h/4, 0, h/4, h/4, 45, color4, "/sounds/p4D5.mp3", "/sounds/p4E4.mp3", "/sounds/p4F6.mp3");
   
-  shape5 = new DraggableTriangle(0, 0, h/4, h/4, 135, color5, "/sounds/p5C7.mp3"); 
+  shape5 = new DraggableTriangle(0, 0, h/4, h/4, 135, color5, "/sounds/p5B4.mp3", "/sounds/p5C7.mp3", "/sounds/p5F4_.mp3"); 
  
-  shape6 = new DraggableParallelogram(-widthTangram/4,-widthTangram/4, widthTangram/2, widthTangram/4, 270, color6, "/sounds/p6g6.mp3");
+  shape6 = new DraggableParallelogram(-widthTangram/4,-widthTangram/4, widthTangram/2, widthTangram/4, 270, color6, "/sounds/p6C5_.mp3", "/sounds/p6C6_.mp3", "/sounds/p6E7.mp3");
   
-  shape7 = new DraggableTriangle(-widthTangram/2,-widthTangram/2, widthTangram/2, widthTangram/2, -90, color7, "/sounds/p7D6.mp3"); 
+  shape7 = new DraggableTriangle(-widthTangram/2,-widthTangram/2, widthTangram/2, widthTangram/2, -90, color7, "/sounds/p7D6.mp3", "/sounds/p7E3.mp3", "/sounds/p7G5.mp3"); 
   
   
 }
