@@ -5,14 +5,29 @@ let infoImg
 var melody
 var melodyVolume = 0.1;
 
+let message = 'I am a cage in search of a bird!';
+let messageX; // posição da frase em x
+let messageY; // posição da frase em y
+let velX = 1; //velocidade do movimento
+let velY = 0; //velocidade do movimento
+let xSpeed = 1; // velocidade horizontal
+let ySpeed = 2; // velocidade da ondulação
+const amplitude = 10;
+const verticalLetterSpacing = 10;
+let font;
+
+
 function preload() {
   infoImg = loadImage('images/icon.png');
   melody = loadSound('/sounds/melody1.mp3');
 }
 function setup() {
-
+  textFont("Arial");
   angleMode(DEGREES);
   createCanvas(windowWidth, windowHeight);
+  messageX = width / 3;
+  messageY = height * 0.95;
+
   let widthTangram = 200;
   let h = sqrt(pow(widthTangram, 2) * 2);
   
@@ -53,7 +68,56 @@ function setup() {
 
 function draw() {
   background(255)
+  fill(0);
   // image(infoImg, 0, 0)
+
+  textSize(25);
+  
+  for (let i = 0; i < message.length; i++) {
+    const letterX = messageX + textWidth(message.substring(0, i));
+
+    const letterOffset = i * verticalLetterSpacing;
+    const letterY = messageY + sin((frameCount - letterOffset) * ySpeed) * amplitude;
+
+    text(message[i], letterX, letterY);
+  }
+
+  // Atualizar posição da frase
+  messageX += velX;
+  messageY += velY;
+  // Quando atinge a extremidade direita ou esquerda
+  if (messageX + textWidth(message) > width || messageX < 0) {
+    messageX = constrain(messageX, 0, width - textWidth(message)); // Manter-se dentro dos limites
+
+    // Se atingir a extremidade esquerda, mova para baixo
+    if (messageX <= 0) {
+      velY = 1;
+      velX = 0;
+     
+    }
+    // Se atingir a extremidade direita, mova para cima
+    else {
+      velY = -1;
+      velX = 0;
+     
+    }
+  }
+
+  // Quando atinge a extremidade superior ou inferior
+  if (messageY + verticalLetterSpacing > height || messageY < 0) {
+    messageY = constrain(messageY, 0, height - verticalLetterSpacing); // Manter-se dentro dos limites
+
+    // Se atingir a parte superior, mova para a esquerda
+    if (messageY <= 0) {
+      velX = -1;
+      velY = 0;
+    }
+    // Se atingir a parte inferior, mova para a direita
+    else {
+      velX = 1;
+      velY = 0;
+    }
+  }
   shape1.display();
   shape2.display();
   shape3.display();
