@@ -135,9 +135,9 @@ class DraggableTriangle {
       // Quit dragging
       this.dragging = false;
       console.log(this.rand);
-      this.sounds[0].stop();
-      this.sounds[1].stop();
-      this.sounds[2].stop();
+      this.sounds[0].setVolume(0, 2);
+      this.sounds[1].setVolume(0, 2);
+      this.sounds[2].setVolume(0, 2);
     }
     
     display() {

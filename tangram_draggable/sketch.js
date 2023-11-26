@@ -9,10 +9,12 @@ function preload() {
   infoImg = loadImage('images/icon.png');
   melody = loadSound('/sounds/melody1.mp3');
 }
+
 function setup() {
 
   angleMode(DEGREES);
   createCanvas(windowWidth, windowHeight);
+  
   let widthTangram = 200;
   let h = sqrt(pow(widthTangram, 2) * 2);
   
