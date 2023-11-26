@@ -17,8 +17,7 @@ class DraggableMenu {
     this.offsetY = 0;
 
     this.chosenColor = chosenColor;
-    this.a = createA('game.html', '‎  ‎ ');
-
+    
     this.img = img
   }
   
@@ -96,7 +95,6 @@ class DraggableMenu {
     fill("white")
     push()
     translate(windowWidth * 0.5, windowHeight * 0.5)
-    this.a.position(this.x + windowWidth * 0.5 - (this.r/2), this.y + windowHeight * 0.5 - (this.r/2))
     noStroke();
     ellipse(this.x, this.y, this.r, this.r);
     image(this.img, this.x - (this.img.width/2), this.y - (this.img.height/2));
@@ -108,8 +106,11 @@ class DraggableMenu {
     if (this.isInside(this.getCoord()[0], this.getCoord()[1])) {
       this.dragging = true;
       if (this.click == true) {
+        
         this.click = false
       } else {
+        var popup = document.getElementById("popup");
+      popup.classList.toggle("hide");
         this.click = true;
       }
       // If so, keep track of relative location of click to corner of rectangle
