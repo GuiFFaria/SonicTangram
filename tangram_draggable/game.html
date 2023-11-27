@@ -6,6 +6,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.2/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.2/addons/p5.dom.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.2/addons/p5.sound.min.js"></script>
+  <script src="./node_modules/interactjs/dist/interact.js"></script>
   <link rel="stylesheet" type="text/css" href="styleGame.css">
   <script src="draggableMenu.js"></script>
   <script src="draggableSquare.js"></script>
@@ -22,12 +23,51 @@
       When the shape is formed you will 
       have a melody/sound composition. Use the quote as inspiration. <br/>
        <br/>
-       <div id="botaoFechar" onclick="myFunction()"><img style="height: 40px; width: 40px;" src="images/botaoFechar.png" alt="Fechar"></div>       
-    </span>
-  </div>
+       <div id="botaoFechar" onclick="myFunction()"><img style="height: 40px; width: 40px;" src="images/botaoFechar.png" alt="Fechar"></div>
+      </span>
+    </div>
+    <div class="box">
+      <!--
+      <svg class="teste" >
+        <polygon class="arrow" points="50,0 75,25 62.5,25 62.5,100 37.5,100 37.5,25 25,25" fill="#29e"></polygon>
+
+        <polygon class="arrow" points="50,0 75,25 62.5,25 62.5,100 37.5,100 37.5,25 25,25" fill="#29e"></polygon>
+      </svg>
+      -->
+      <div class="arrow"></div>
+      </div>
+    </div>  
 
   <script src="scriptComposicao.js"></script>
   <script src="sketch.js"></script>
+  <style>
+    .teste {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      z-index: 1;
+    }
+
+    .box {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+
+
+    .arrow {
+      display: flex;
+      background-image: url("images/botaoFechar.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      width: 100px;
+      height: 100px;
+      touch-action: none;
+      z-index: 1;
+    }
+
+    </style>
+
 </body>
 
 </html>

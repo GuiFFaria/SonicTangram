@@ -1,3 +1,4 @@
+
 let shape1, shape2, shape3, shape4, shape5, shape6, shape7
 let color1, color2, color3, color4, color5, color6, color7
 let menu
@@ -16,24 +17,32 @@ const amplitude = 10;
 const verticalLetterSpacing = 10;
 let font;
 
+let sounds1 = new Array(3);
+let rand;
 
 function preload() {
   infoImg = loadImage('images/icon.png');
   melody = loadSound('/sounds/melody1.mp3');
+
+  sounds1[0] = loadSound("/sounds/p1A4.mp3");
+  sounds1[1] = loadSound("/sounds/p1A5_.mp3");
+  sounds1[2] = loadSound("/sounds/p1A5.mp3");
 }
 
 function setup() {
   textFont("Arial");
   angleMode(DEGREES);
-  createCanvas(windowWidth, windowHeight);
+  let canvas = createCanvas(windowWidth, windowHeight);
+  //adicionar canvas com class 'objects'
+  canvas.class('objects');
   messageX = width / 3;
   messageY = height * 0.95;
 
   let widthTangram = 200;
   let h = sqrt(pow(widthTangram, 2) * 2);
   
-  melody.setVolume(0.1, 1);
-  melody.loop();
+  //melody.setVolume(0.1, 1);
+  //melody.loop();
   //color palette
   
   color1 = '#8ecae6'
@@ -59,7 +68,8 @@ function setup() {
  
   shape6 = new DraggableParallelogram(-widthTangram/4,-widthTangram/4, widthTangram/2, widthTangram/4, 270, color6, "/sounds/p6C5_.mp3", "/sounds/p6C6_.mp3", "/sounds/p6E7.mp3");
   
-  shape7 = new DraggableTriangle(-widthTangram/2,-widthTangram/2, widthTangram/2, widthTangram/2, -90, color7, "/sounds/p7D6.mp3", "/sounds/p7E3.mp3", "/sounds/p7G5.mp3"); 
+  shape7 = new DraggableTriangle(-widthTangram/2,-widthTangram/2, widthTangram/2, widthTangram/2, -90, color7, "/sounds/p7D6.mp3", "/sounds/p7E3.mp3", "/sounds/p7G5.mp3");
+  
   
   
 }
@@ -128,12 +138,161 @@ function draw() {
   shape7.display();
   menu.display();
 
+  // function event listener for mouse events when the div .arrow is pressed, the function playSound is called, when the div .arrow is released, the function stopSound is called
 
 
+  document.querySelector('.arrow').addEventListener('mousedown', mousepressed);
+  document.querySelector('.arrow').addEventListener('mouseup', mousereleased);
+
+
+
+  /*use interact.js to drag and drop the shapes*/
+  function dragMoveListener(event) {
+    var target = event.target
+    // keep the dragged position in the data-x/data-y attributes
+    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+    // translate the element
+    target.style.webkitTransform =
+      target.style.transform =
+      'translate(' + x + 'px, ' + y + 'px)'
+
+    // update the posiion attributes
+    target.setAttribute('data-x', x)
+    target.setAttribute('data-y', y)
+  }
+
+  interact('.arrow')
+    .draggable({
+      // enable inertial throwing
+      inertia: true,
+      // keep the element within the area of it's parent
+      modifiers: [
+        interact.modifiers.restrictRect({
+          restriction: 'parent',
+          endOnly: true
+        })
+      ],
+      // enable autoScroll
+      autoScroll: true,
+      
+      listeners: {
+        // call this function on every dragmove event
+        move: dragMoveListener,
+
+        // call this function on every dragend event
+        end(event) {
+          var textEl = event.target.querySelector('arrow')
+
+          textEl && (textEl.textContent =
+            'moved a distance of ' +
+            (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+              Math.pow(event.pageY - event.y0, 2) | 0))
+              .toFixed(2) + 'px')
+        }
+      }
+    })
+
+
+  // this is used later in the resizing demo
+  window.dragMoveListener = dragMoveListener
+
+  /*use interact.js to resize the shapes*/
+  
+  interact('.arrow')
+    .resizable({
+      // resize from all edges and corners
+      edges: {
+        left: true,
+        right: true,
+        bottom: true,
+        top: true
+      },
+
+      listeners: {
+        move(event) {
+          var target = event.target
+          var x = (parseFloat(target.getAttribute('data-x')) || 0)
+          var y = (parseFloat(target.getAttribute('data-y')) || 0)
+
+          // update the element's style
+          target.style.width = event.rect.width + 'px'
+          target.style.height = event.rect.height + 'px'
+
+          // translate when resizing from top or left edges
+          x += event.deltaRect.left
+          y += event.deltaRect.top
+
+          target.style.transform =
+            'translate(' + x + 'px,' + y + 'px)'
+
+          target.setAttribute('data-x', x)
+          target.setAttribute('data-y', y)
+          target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height)
+        }
+      },
+      modifiers: [
+        // keep the edges inside the parent
+        interact.modifiers.restrictEdges({
+          outer: 'parent',
+          endOnly: true
+        }),
+
+        // minimum size
+        
+        interact.modifiers.restrictSize({
+          min: {
+            width: 100,
+            height: 50
+          }
+        })
+        
+      ],
+
+      inertia: true
+    })
+
+    // rotate
+    
+    var angle = 0
+    interact('.objects')
+      .gesturable({
+        listeners: {
+          move(event) {
+            var objects = document.getElementsByClassName('objects')
+
+            angle += event.da
+
+            for (var i = 0; i < objects.length; i++) {
+              console.log(objects[i])
+              objects[i].style.webkitTransform =
+                objects[i].style.transform =
+                'rotate(' + angle + 'deg)'
+            }
+
+
+          }
+        }
+      })
+      
 }
 
+//event listener for mouse events 
+// when the div .arrow is pressed, the function playSound is called
+//when the div .arrow is released, the function stopSound is called
 
-function mousePressed() {
+
+
+function mousepressed() {
+
+  console.log("mouse pressed");
+  rand = Math.floor(Math.random() * 3);
+
+  console.log(rand);
+  sounds1[rand].setVolume(0.1);
+  sounds1[rand].loop();
+  /*
   shape1.pressed();
   shape2.pressed();
   shape3.pressed();
@@ -142,9 +301,16 @@ function mousePressed() {
   shape6.pressed();
   shape7.pressed();
   menu.pressed();
+  */
 }
 
-function mouseReleased() {
+function mousereleased() {
+
+  console.log("mouse released");
+  sounds1[0].setVolume(0, 2);
+  sounds1[1].setVolume(0, 2);
+  sounds1[2].setVolume(0, 2);
+  /*
   shape1.released();
   shape2.released();
   shape3.released();
@@ -153,4 +319,5 @@ function mouseReleased() {
   shape6.released();
   shape7.released();
   menu.released();
+  */
 }
