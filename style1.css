@@ -1,0 +1,16 @@
+svg.svgwave {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+svg.svgwave path {
+    fill:transparent;
+    stroke:red;
+    stroke-width:1px;
+}
+
+svg.svgwave text {
+    font-size:20px;
+    fill: white;
+}
