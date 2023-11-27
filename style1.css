@@ -11,6 +11,7 @@ svg.svgwave path {
 }
 
 svg.svgwave text {
-    font-size:20px;
-    fill: white;
+    font-size:6rem;
+    fill: black;
+    font-family: Outfit ;
 }
