@@ -6,12 +6,12 @@ svg.svgwave {
 
 svg.svgwave path {
     fill:transparent;
-    stroke:red;
-    stroke-width:1px;
+    /*stroke:red;
+    stroke-width:1px;*/
 }
 
 svg.svgwave text {
-    font-size:6rem;
+    font-size:4rem;
     fill: black;
     font-family: Outfit ;
 }
