@@ -141,8 +141,8 @@ function draw() {
   // function event listener for mouse events when the div .arrow is pressed, the function playSound is called, when the div .arrow is released, the function stopSound is called
 
 
-  document.querySelector('.arrow').addEventListener('mousedown', mousepressed);
-  document.querySelector('.arrow').addEventListener('mouseup', mousereleased);
+  document.querySelector('.forma').addEventListener('mousedown', mousepressed);
+  document.querySelector('.forma').addEventListener('mouseup', mousereleased);
 
 
 
@@ -163,7 +163,7 @@ function draw() {
     target.setAttribute('data-y', y)
   }
 
-  interact('.arrow')
+  interact('.forma')
     .draggable({
       // enable inertial throwing
       inertia: true,
@@ -183,7 +183,7 @@ function draw() {
 
         // call this function on every dragend event
         end(event) {
-          var textEl = event.target.querySelector('arrow')
+          var textEl = event.target.querySelector('forma')
 
           textEl && (textEl.textContent =
             'moved a distance of ' +
@@ -192,15 +192,65 @@ function draw() {
               .toFixed(2) + 'px')
         }
       }
-    })
+    }
+  )
 
 
   // this is used later in the resizing demo
   window.dragMoveListener = dragMoveListener
 
-  /*use interact.js to resize the shapes*/
+  // use interact.js to resize with pinch gesture*/
+  var angleScale = {
+    angle: 0,
+    scale: 1
+  }
+  var gestureArea = document.querySelector('.forma')
+  var scaleElement = document.querySelector('.forma')
+  var resetTimeout
   
-  interact('.arrow')
+  interact(gestureArea)
+    .gesturable({
+      listeners: {
+        start (event) {
+          angleScale.angle -= event.angle
+  
+          clearTimeout(resetTimeout)
+          scaleElement.classList.remove('reset')
+        },
+        move (event) {
+          // document.body.appendChild(new Text(event.scale))
+          var currentAngle = event.angle + angleScale.angle
+          var currentScale = event.scale * angleScale.scale
+  
+          scaleElement.style.transform =
+            'rotate(' + currentAngle + 'deg)' + 'scale(' + currentScale + ')'
+  
+          // uses the dragMoveListener from the draggable demo above
+          dragMoveListener(event)
+        },
+        end (event) {
+          angleScale.angle = angleScale.angle + event.angle
+          angleScale.scale = angleScale.scale * event.scale
+  
+          resetTimeout = setTimeout(reset, 1000)
+          scaleElement.classList.add('reset')
+        }
+      }
+    })
+    .draggable({
+      listeners: { move: dragMoveListener }
+    })
+  
+  function reset () {
+    scaleElement.style.transform = 'scale(1)'
+  
+    angleScale.angle = 0
+    angleScale.scale = 1
+  }
+
+  /*use interact.js to resize with mouse the shapes*/
+  /*
+  interact('.forma')
     .resizable({
       // resize from all edges and corners
       edges: {
@@ -252,25 +302,23 @@ function draw() {
 
       inertia: true
     })
-
+    */  
     // rotate
     
     var angle = 0
-    interact('.objects')
+    interact('.forma')
       .gesturable({
         listeners: {
           move(event) {
-            var objects = document.getElementsByClassName('objects')
+            var objects = document.getElementsByClassName('forma')
 
             angle += event.da
 
             for (var i = 0; i < objects.length; i++) {
               console.log(objects[i])
-              objects[i].style.webkitTransform =
                 objects[i].style.transform =
                 'rotate(' + angle + 'deg)'
             }
-
 
           }
         }
