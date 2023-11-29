@@ -18,6 +18,12 @@ const verticalLetterSpacing = 10;
 let font;
 
 let sounds1 = new Array(3);
+let sounds2 = new Array(3);
+let sounds3 = new Array(3);
+let sounds4 = new Array(3);
+let sounds5 = new Array(3);
+let sounds6 = new Array(3);
+let sounds7 = new Array(3);
 let rand;
 
 function preload() {
@@ -27,6 +33,31 @@ function preload() {
   sounds1[0] = loadSound("/sounds/p1A4.mp3");
   sounds1[1] = loadSound("/sounds/p1A5_.mp3");
   sounds1[2] = loadSound("/sounds/p1A5.mp3");
+
+  sounds2[0] = loadSound("/sounds/p2B5.mp3");
+  sounds2[1] = loadSound("/sounds/p2C4.mp3");
+  sounds2[2] = loadSound("/sounds/p2C5.mp3");
+
+  sounds3[0] = loadSound("/sounds/p3D3.mp3");
+  sounds3[1] = loadSound("/sounds/p3E5.mp3");
+  sounds3[2] = loadSound("/sounds/p3F4.mp3");
+
+  sounds4[0] = loadSound("/sounds/p4D5.mp3");
+  sounds4[1] = loadSound("/sounds/p4E4.mp3");
+  sounds4[2] = loadSound("/sounds/p4F6.mp3");
+
+  sounds5[0] = loadSound("/sounds/p5B4.mp3");
+  sounds5[1] = loadSound("/sounds/p5C7.mp3");
+  sounds5[2] = loadSound("/sounds/p5F4_.mp3");
+
+  sounds6[0] = loadSound("/sounds/p6C5_.mp3");
+  sounds6[1] = loadSound("/sounds/p6C6_.mp3");
+  sounds6[2] = loadSound("/sounds/p6E7.mp3");
+
+  sounds7[0] = loadSound("/sounds/p7D6.mp3");
+  sounds7[1] = loadSound("/sounds/p7E3.mp3");
+  sounds7[2] = loadSound("/sounds/p7G5.mp3");
+
 }
 
 function setup() {
@@ -73,8 +104,6 @@ function setup() {
   
   
 }
-
-
 
 
 function draw() {
@@ -141,8 +170,26 @@ function draw() {
   // function event listener for mouse events when the div .arrow is pressed, the function playSound is called, when the div .arrow is released, the function stopSound is called
 
 
-  document.querySelector('.forma').addEventListener('mousedown', mousepressed);
-  document.querySelector('.forma').addEventListener('mouseup', mousereleased);
+  document.getElementById('peca1').addEventListener('mousedown', mousepressed1);
+  document.getElementById('peca1').addEventListener('mouseup', mousereleased1);
+
+  document.getElementById('peca2').addEventListener('mousedown', mousepressed2);
+  document.getElementById('peca2').addEventListener('mouseup', mousereleased2);
+
+  document.getElementById('peca3').addEventListener('mousedown', mousepressed3);
+  document.getElementById('peca3').addEventListener('mouseup', mousereleased3);
+
+  document.getElementById('peca4').addEventListener('mousedown', mousepressed4);
+  document.getElementById('peca4').addEventListener('mouseup', mousereleased4);
+
+  document.getElementById('peca5').addEventListener('mousedown', mousepressed5);
+  document.getElementById('peca5').addEventListener('mouseup', mousereleased5);
+
+  document.getElementById('peca6').addEventListener('mousedown', mousepressed6);
+  document.getElementById('peca6').addEventListener('mouseup', mousereleased6);
+
+  document.getElementById('peca7').addEventListener('mousedown', mousepressed7);
+  document.getElementById('peca7').addEventListener('mouseup', mousereleased7);
 
 
 
@@ -332,7 +379,7 @@ function draw() {
 
 
 
-function mousepressed() {
+function mousepressed1() {
 
   console.log("mouse pressed");
   rand = Math.floor(Math.random() * 3);
@@ -340,32 +387,133 @@ function mousepressed() {
   console.log(rand);
   sounds1[rand].setVolume(0.1);
   sounds1[rand].loop();
-  /*
-  shape1.pressed();
-  shape2.pressed();
-  shape3.pressed();
-  shape4.pressed();
-  shape5.pressed();
-  shape6.pressed();
-  shape7.pressed();
-  menu.pressed();
-  */
+
 }
 
-function mousereleased() {
+function mousepressed2() {
+
+  console.log("mouse pressed");
+  rand = Math.floor(Math.random() * 3);
+
+  console.log(rand);
+  sounds2[rand].setVolume(0.1);
+  sounds2[rand].loop();
+
+}
+
+function mousepressed3() {
+
+  console.log("mouse pressed");
+  rand = Math.floor(Math.random() * 3);
+
+  console.log(rand);
+  sounds3[rand].setVolume(0.1);
+  sounds3[rand].loop();
+
+}
+
+function mousepressed4() {
+
+  console.log("mouse pressed");
+  rand = Math.floor(Math.random() * 3);
+
+  console.log(rand);
+  sounds4[rand].setVolume(0.1);
+  sounds4[rand].loop();
+
+}
+
+function mousepressed5() {
+
+  console.log("mouse pressed");
+  rand = Math.floor(Math.random() * 3);
+
+  console.log(rand);
+  sounds5[rand].setVolume(0.1);
+  sounds5[rand].loop();
+
+}
+
+function mousepressed6() {
+
+  console.log("mouse pressed");
+  rand = Math.floor(Math.random() * 3);
+
+  console.log(rand);
+  sounds6[rand].setVolume(0.1);
+  sounds6[rand].loop();
+}
+
+function mousepressed7() {
+
+  console.log("mouse pressed");
+  rand = Math.floor(Math.random() * 3);
+
+  console.log(rand);
+  sounds7[rand].setVolume(0.1);
+  sounds7[rand].loop();
+
+}
+
+function mousereleased1() {
 
   console.log("mouse released");
   sounds1[0].setVolume(0, 2);
   sounds1[1].setVolume(0, 2);
   sounds1[2].setVolume(0, 2);
-  /*
-  shape1.released();
-  shape2.released();
-  shape3.released();
-  shape4.released();
-  shape5.released();
-  shape6.released();
-  shape7.released();
-  menu.released();
-  */
+ 
+}
+
+function mousereleased2() {
+
+  console.log("mouse released");
+  sounds2[0].setVolume(0, 2);
+  sounds2[1].setVolume(0, 2);
+  sounds2[2].setVolume(0, 2);
+ 
+}
+
+function mousereleased3() {
+
+  console.log("mouse released");
+  sounds3[0].setVolume(0, 2);
+  sounds3[1].setVolume(0, 2);
+  sounds3[2].setVolume(0, 2);
+ 
+}
+
+function mousereleased4() {
+
+  console.log("mouse released");
+  sounds4[0].setVolume(0, 2);
+  sounds4[1].setVolume(0, 2);
+  sounds4[2].setVolume(0, 2);
+ 
+}
+
+function mousereleased5() {
+
+  console.log("mouse released");
+  sounds5[0].setVolume(0, 2);
+  sounds5[1].setVolume(0, 2);
+  sounds5[2].setVolume(0, 2);
+ 
+}
+
+function mousereleased6() {
+
+  console.log("mouse released");
+  sounds6[0].setVolume(0, 2);
+  sounds6[1].setVolume(0, 2);
+  sounds6[2].setVolume(0, 2);
+ 
+}
+
+function mousereleased7() {
+
+  console.log("mouse released");
+  sounds7[0].setVolume(0, 2);
+  sounds7[1].setVolume(0, 2);
+  sounds7[2].setVolume(0, 2);
+ 
 }
