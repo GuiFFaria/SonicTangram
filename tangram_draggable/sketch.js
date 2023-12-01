@@ -1,21 +1,9 @@
 
-let shape1, shape2, shape3, shape4, shape5, shape6, shape7
-let color1, color2, color3, color4, color5, color6, color7
-let menu
 let infoImg
 var melody
 var melodyVolume = 0.1;
 
-let message = 'I am a cage in search of a bird!';
-let messageX; // posição da frase em x
-let messageY; // posição da frase em y
-let velX = 1; //velocidade do movimento
-let velY = 0; //velocidade do movimento
-let xSpeed = 1; // velocidade horizontal
-let ySpeed = 2; // velocidade da ondulação
-const amplitude = 10;
-const verticalLetterSpacing = 10;
-let font;
+
 
 let sounds1 = new Array(3);
 let sounds2 = new Array(3);
@@ -28,35 +16,35 @@ let rand;
 
 function preload() {
   infoImg = loadImage('images/icon.png');
-  melody = loadSound('/sounds/melody1.mp3');
+  melody = loadSound('../sounds/melody1.mp3');
 
-  sounds1[0] = loadSound("/sounds/p1A4.mp3");
-  sounds1[1] = loadSound("/sounds/p1A5_.mp3");
-  sounds1[2] = loadSound("/sounds/p1A5.mp3");
+  sounds1[0] = loadSound("../sounds/P1A4.mp3");
+  sounds1[1] = loadSound("../sounds/P1A5_.mp3");
+  sounds1[2] = loadSound("../sounds/P1A5.mp3");
 
-  sounds2[0] = loadSound("/sounds/p2B5.mp3");
-  sounds2[1] = loadSound("/sounds/p2C4.mp3");
-  sounds2[2] = loadSound("/sounds/p2C5.mp3");
+  sounds2[0] = loadSound("../sounds/P2B5.mp3");
+  sounds2[1] = loadSound("../sounds/P2C4.mp3");
+  sounds2[2] = loadSound("../sounds/P2C5.mp3");
 
-  sounds3[0] = loadSound("/sounds/p3D3.mp3");
-  sounds3[1] = loadSound("/sounds/p3E5.mp3");
-  sounds3[2] = loadSound("/sounds/p3F4.mp3");
+  sounds3[0] = loadSound("../sounds/P3D3.mp3");
+  sounds3[1] = loadSound("../sounds/P3E5.mp3");
+  sounds3[2] = loadSound("../sounds/P3F4.mp3");
 
-  sounds4[0] = loadSound("/sounds/p4D5.mp3");
-  sounds4[1] = loadSound("/sounds/p4E4.mp3");
-  sounds4[2] = loadSound("/sounds/p4F6.mp3");
+  sounds4[0] = loadSound("../sounds/P4D5.mp3");
+  sounds4[1] = loadSound("../sounds/P4E4.mp3");
+  sounds4[2] = loadSound("../sounds/P4F6.mp3");
 
-  sounds5[0] = loadSound("/sounds/p5B4.mp3");
-  sounds5[1] = loadSound("/sounds/p5C7.mp3");
-  sounds5[2] = loadSound("/sounds/p5F4_.mp3");
+  sounds5[0] = loadSound("../sounds/P5B4.mp3");
+  sounds5[1] = loadSound("../sounds/P5C7.mp3");
+  sounds5[2] = loadSound("../sounds/P5F4_.mp3");
 
-  sounds6[0] = loadSound("/sounds/p6C5_.mp3");
-  sounds6[1] = loadSound("/sounds/p6C6_.mp3");
-  sounds6[2] = loadSound("/sounds/p6E7.mp3");
+  sounds6[0] = loadSound("../sounds/P6C5_.mp3");
+  sounds6[1] = loadSound("../sounds/P6C6_.mp3");
+  sounds6[2] = loadSound("../sounds/P6E7.mp3");
 
-  sounds7[0] = loadSound("/sounds/p7D6.mp3");
-  sounds7[1] = loadSound("/sounds/p7E3.mp3");
-  sounds7[2] = loadSound("/sounds/p7G5.mp3");
+  sounds7[0] = loadSound("../sounds/P7D6.mp3");
+  sounds7[1] = loadSound("../sounds/P7E3.mp3");
+  sounds7[2] = loadSound("../sounds/P7G5.mp3");
 
 }
 
@@ -72,35 +60,6 @@ function setup() {
   let widthTangram = 200;
   let h = sqrt(pow(widthTangram, 2) * 2);
   
-  //melody.setVolume(0.1, 1);
-  //melody.loop();
-  //color palette
-  
-  color1 = '#8ecae6'
-  color2 = '#219ebc'
-  color3 = '#126782'
-  color4 = '#023047'
-  color5 = '#ffb703'
-  color6 = '#fd9e02'
-  color7 = '#fb8500'
-
-  
-  menu = new DraggableMenu(widthTangram, -widthTangram, 30, "red", infoImg);
-  
-  shape1 = new DraggableTriangle(0, 0, h/2, h/2, -135, color1 , "/sounds/p1A4.mp3", "/sounds/p1A5_.mp3", "/sounds/p1A5.mp3");
-
-  shape2 = new DraggableTriangle(0, 0, h/2, h/2, -45, color2, "/sounds/p2B5.mp3", "/sounds/p2C4.mp3", "/sounds/p2C5.mp3");
-    
-  shape3 = new DraggableSquare(0,0,h/4,h/4, 45, color3, "/sounds/p3D3.mp3", "/sounds/p3E5.mp3", "/sounds/p3F4.mp3");
-  
-  shape4 = new DraggableTriangle(h/4, 0, h/4, h/4, 45, color4, "/sounds/p4D5.mp3", "/sounds/p4E4.mp3", "/sounds/p4F6.mp3");
-  
-  shape5 = new DraggableTriangle(0, 0, h/4, h/4, 135, color5, "/sounds/p5B4.mp3", "/sounds/p5C7.mp3", "/sounds/p5F4_.mp3"); 
- 
-  shape6 = new DraggableParallelogram(-widthTangram/4,-widthTangram/4, widthTangram/2, widthTangram/4, 270, color6, "/sounds/p6C5_.mp3", "/sounds/p6C6_.mp3", "/sounds/p6E7.mp3");
-  
-  shape7 = new DraggableTriangle(-widthTangram/2,-widthTangram/2, widthTangram/2, widthTangram/2, -90, color7, "/sounds/p7D6.mp3", "/sounds/p7E3.mp3", "/sounds/p7G5.mp3");
-  
   
   
 }
@@ -109,63 +68,7 @@ function setup() {
 function draw() {
   background(255)
   fill(0);
-  // image(infoImg, 0, 0)
-
-  textSize(25);
-  
-  for (let i = 0; i < message.length; i++) {
-    const letterX = messageX + textWidth(message.substring(0, i));
-
-    const letterOffset = i * verticalLetterSpacing;
-    const letterY = messageY + sin((frameCount - letterOffset) * ySpeed) * amplitude;
-
-    text(message[i], letterX, letterY);
-  }
-
-  // Atualizar posição da frase
-  messageX += velX;
-  messageY += velY;
-  // Quando atinge a extremidade direita ou esquerda
-  if (messageX + textWidth(message) > width || messageX < 0) {
-    messageX = constrain(messageX, 0, width - textWidth(message)); // Manter-se dentro dos limites
-
-    // Se atingir a extremidade esquerda, mova para baixo
-    if (messageX <= 0) {
-      velY = 1;
-      velX = 0;
-     
-    }
-    // Se atingir a extremidade direita, mova para cima
-    else {
-      velY = -1;
-      velX = 0;
-     
-    }
-  }
-
-  // Quando atinge a extremidade superior ou inferior
-  if (messageY + verticalLetterSpacing > height || messageY < 0) {
-    messageY = constrain(messageY, 0, height - verticalLetterSpacing); // Manter-se dentro dos limites
-
-    // Se atingir a parte superior, mova para a esquerda
-    if (messageY <= 0) {
-      velX = -1;
-      velY = 0;
-    }
-    // Se atingir a parte inferior, mova para a direita
-    else {
-      velX = 1;
-      velY = 0;
-    }
-  }
-  shape1.display();
-  shape2.display();
-  shape3.display();
-  shape4.display();
-  shape5.display(); 
-  shape6.display();
-  shape7.display();
-  menu.display();
+ 
 
   // function event listener for mouse events when the div .arrow is pressed, the function playSound is called, when the div .arrow is released, the function stopSound is called
 
@@ -378,6 +281,8 @@ function draw() {
 //when the div .arrow is released, the function stopSound is called
 
 
+/* TODO: acho que o codigo podia ficar mais clean que nao houvesse tanta repetição destas funções
+podia ser uma só função com um switch por exemplo */
 
 function mousepressed1() {
 
