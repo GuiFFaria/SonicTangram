@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 
+<!-- TODO: porque é que existem 2 ficheiros CSS? -->
+
 <head>
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.2/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.2/addons/p5.dom.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.2/addons/p5.sound.min.js"></script>
+  <script src="./node_modules/interactjs/dist/interact.js"></script>
   <link rel="stylesheet" type="text/css" href="styleGame.css">
-  <script src="draggableMenu.js"></script>
-  <script src="draggableSquare.js"></script>
-  <script src="draggableTriangle.js"></script>
-  <script src="draggableParallelogram.js"></script>
 </head>
 
 <body>
+
+  <!-- TODO: se possível colocar todo este código do popup no ficheiro JS para o codigo ficar mais clean -->
+  
   <div class="popup" id="Popup">
     <span class="popupText" id="popup">
       <h3>How to play</h3>
@@ -21,13 +23,119 @@
       Each piece has a sound.
       When the shape is formed you will 
       have a melody/sound composition. Use the quote as inspiration. <br/>
-       <br/>
-       <div id="botaoFechar" onclick="myFunction()"><img style="height: 40px; width: 40px;" src="images/botaoFechar.png" alt="Fechar"></div>       
-    </span>
+        <br/>
+        <div id="botaoFechar" onclick="myFunction()"><img style="height: 40px; width: 40px;" src="images/botaoFechar.png" alt="Fechar"></div>
+      </span>
   </div>
+
+
+  <!-- TODO: não sei se é só no meu PC, mas a box não ocupa toda a dimensão do ecrã -->
+  <div class="box">
+
+
+    <img id="menu" src="images/menu1.svg" class="forma" width="200px" height="200px"></img>
+
+    <!-- TODO: tentar colocar todos estes SVG's num script JS para ficar o codigo mais bonito
+    Algo como tangramPieces.js -->
+
+    <!--Peça 1-->
+    <svg class="forma" width="10vw" height="10vw" id="peca1" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+      <defs>
+        <style>
+          .cls-1 {
+            fill: #52b69a;
+          }
+        </style>
+      </defs>
+      <g id="Layer_1-2" data-name="Layer 1">
+        <rect class="cls-1" x="36.61" y="36.61" width="176.78" height="176.78" transform="translate(-51.78 125) rotate(-45)"/>
+      </g>
+    </svg>
+    <!--Peça 2-->
+    <svg class="forma" widtth="10vw" height="10vw" id="peca2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 249.48 124.74">
+      <defs>
+        <style>
+          .cls-2 {
+            fill: #1e6091;
+          }
+        </style>
+      </defs>
+      <g id="Layer_1-2" data-name="Layer 1">
+        <polygon class="cls-2" points="124.74 0 0 124.74 249.48 124.74 124.74 0"/>
+      </g>
+    </svg>
+    <!--Peça 3-->
+    <svg class="forma" widtth="10vw" height="10vw" id="peca3" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 249.48 124.74">
+      <defs>
+        <style>
+          .cls-3 {
+            fill: #1e6091;
+          }
+        </style>
+      </defs>
+      <g id="Layer_1-2" data-name="Layer 1">
+        <polygon class="cls-3" points="124.74 0 0 124.74 249.48 124.74 124.74 0"/>
+      </g>
+    </svg>
+    <!--Peça 4-->
+    <svg class="forma" widtth="10vw" height="10vw" id="peca4" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250">
+      <defs>
+        <style>
+          .cls-4 {
+            fill: #99d98c;
+          }
+        </style>
+      </defs>
+      <g id="Layer_1-2" data-name="Layer 1">
+        <polygon class="cls-4" points="500 0 0 0 250 250 500 0"/>
+      </g>
+    </svg>
+    <!--Peça 5-->
+    <svg class="forma" widtth="10vw" height="10vw" id="peca5" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 500">
+      <defs>
+        <style>
+          .cls-5 {
+            fill: #d9ed92;
+          }
+        </style>
+      </defs>
+      <g id="Layer_1-2" data-name="Layer 1">
+        <polygon class="cls-5" points="0 0 0 500 250 250 0 0"/>
+      </g>
+    </svg>
+    <!--Peça 6-->
+    <svg class="forma" widtth="10vw" height="10vw" id="peca6" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124.74 249.48">
+      <defs>
+        <style>
+          .cls-6 {
+            fill: #168aad;
+          }
+        </style>
+      </defs>
+      <g id="Layer_1-2" data-name="Layer 1">
+        <polygon class="cls-6" points="0 124.74 124.74 249.48 124.74 0 0 124.74"/>
+      </g>
+    </svg>
+    <!--Peça 7-->
+    <svg class="forma" widtth="10vw" height="10vw" id="peca7" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+      <defs>
+        <style>
+          .cls-7 {
+            fill: #184e77;
+          }
+        </style>
+      </defs>
+      <g id="Layer_1-2" data-name="Layer 1">
+        <polygon class="cls-7" points="250 250 250 0 0 250 250 250"/>
+      </g>
+    </svg>
+  </div>
+  </div>  
 
   <script src="scriptComposicao.js"></script>
   <script src="sketch.js"></script>
+  <script src="handleMenuOptions.js"></script>
+  
 </body>
 
 </html>

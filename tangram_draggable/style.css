@@ -82,3 +82,19 @@ body{
     animation: fadeIn 1s;
     z-index: -1;
 }
+
+.box {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    z-index: 0;
+  }
+
+  .forma {
+    display: flex;
+    touch-action: none;
+    z-index: 0;
+  }
