@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 249.48 124.74">
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 373.35 125.86">
   <defs>
     <style>
       .cls-1 {
-        fill: #1e6091;
+        fill: #206192;
       }
     </style>
   </defs>
   <g id="Layer_1-2" data-name="Layer 1">
-    <polygon class="cls-1" points="124.74 0 0 124.74 249.48 124.74 124.74 0"/>
+    <polygon class="cls-1" points="125.86 0 0 125.86 250.63 125.86 373.35 0 125.86 0"/>
   </g>
 </svg>

@@ -1,0 +1,11 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(240,240,240);
+    overflow: hidden;
+  }
+  canvas {
+    background-color: rgb(240,240,240);
+    display: block;
+  }
+ 
