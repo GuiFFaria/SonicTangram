@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale-1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <body>
+        <div class="toggle" id="toggle" onclick="menu-expandMenu()">
+            <i id="plus" class="bi bi-plus-lg"></i>
+        </div>
+    
+        <div class="menu" id="menu">
+            <a href="#"><i class="bi bi-moon-stars-fill"></i></a>
+            <a href="#"><i class="bi bi-shuffle"></i></a>
+            <a href="#"><i class="bi bi-record-fill"></i></a>
+            <a href="#"><i class="bi bi-info-lg"></i></a>
+        </div>
+
+        <script>
+            var i = 0
+            function expandMenu() {
+                if(i == 0) {
+                    document.getElementById('menu').style.transform='scale(1.5)'
+                    document.getElementById('plus').style.transform='rotate(45deg)'
+                    i++
+                }
+                else {
+                    document.getElementById('menu').style.transform='scale(0)'
+                    document.getElementById('plus').style.transform='rotate(0deg)'
+                    i = 0
+                }
+            }
+        </script>
+    </body>
+
+
+
+
+</html>
