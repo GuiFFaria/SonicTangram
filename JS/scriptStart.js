@@ -1,18 +1,41 @@
-const retangulos = document.querySelectorAll(".retangulo");
+function addTangramPieces() {
+    //create box
+    const box = document.createElement('div')
+    box.classList.add('box')
+    //add tangram pieces
+    for (let i = 0; i < 7; i++) {
+        const piece = document.createElement('img')
+        piece.classList.add('shape')
+        piece.setAttribute('id', `piece${i+1}`)
+        piece.src = `../tangram_pieces/p${i+1}.svg`
+        box.appendChild(piece)
+    }
 
-retangulos.forEach((retangulo) => {
-    iniciarMovimento(retangulo);
+    document.body.appendChild(box)
+}
+
+function main() {
+    addTangramPieces()
+}
+
+main()
+
+const pieces = document.querySelectorAll(".shape");
+
+
+pieces.forEach((shape) => {
+    startMovement(shape);
 });
 
-function iniciarMovimento(retangulo) {
-    let posX = Math.random() * (window.innerWidth - retangulo.clientWidth);
-    let posY = Math.random() * (window.innerHeight - retangulo.clientHeight);
+function startMovement(shape) {
+    let posX = Math.random() * (window.innerWidth - shape.clientWidth);
+    let posY = Math.random() * (window.innerHeight - shape.clientHeight);
     let velX = Math.random() * 5 - 2;
     let velY = Math.random() * 5 - 2;
 
-    function moverRetangulo() {
-        const maxWidth = window.innerWidth - retangulo.clientWidth;
-        const maxHeight = window.innerHeight - retangulo.clientHeight;
+    function movePiece() {
+        const maxWidth = window.innerWidth - shape.clientWidth;
+        const maxHeight = window.innerHeight - shape.clientHeight;
 
         posX += velX;
         posY += velY;
@@ -24,11 +47,12 @@ function iniciarMovimento(retangulo) {
             velY = -velY;
         }
 
-        retangulo.style.left = posX + "px";
-        retangulo.style.top = posY + "px";
+        shape.style.left = posX + "px";
+        shape.style.top = posY + "px";
 
-        requestAnimationFrame(moverRetangulo);
+        requestAnimationFrame(movePiece);
     }
 
-    moverRetangulo(); // Inicia o movimento contínuo do retângulo
+    movePiece(); // Inicia o movimento contínuo das peças
+    console.log("movePiece");
 }
