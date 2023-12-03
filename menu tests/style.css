@@ -1,8 +1,9 @@
 :root {
+    --container-size:12vw;
     --outter-circle-radius: 5vw;
     --outter-circle-diameter: 10vw;
-    --inner-circle-radius: 2.5vw;
-    --inner-circle-diameter: 5vw;
+    --inner-circle-radius: 2vw;
+    --inner-circle-diameter: 4vw;
     --plus-size: 2vw;
     --icon-size: 1.5vw;
 }
@@ -10,19 +11,26 @@
 body {
     padding: 0;
     margin: 0;
-    background: #2c3e50;
+    background: white;
     overflow: hidden;
 }
 
-
+.container {
+    display: grid;
+    place-items: center;
+    grid-template-rows: auto;
+    position: absolute;
+    top: calc(50vh - var(--container-size));
+    left: calc(50vw - var(--container-size));
+    height: 30vw;
+    width: 30vw;
+}
 .toggle {
+    align-self: stretch;
     background: gray;
     opacity: 70%;
     height: var(--inner-circle-diameter);
     width: var(--inner-circle-diameter);
-    position: absolute;
-    top: calc(50vh - var(--inner-circle-radius));
-    left: calc(50vw - var(--inner-circle-radius));
     margin: auto;
     text-align: center;
     border-radius: 50%;
@@ -40,13 +48,12 @@ body {
 }
 
 .menu {
-    background: white;
+    background: gray;
+    opacity: 50%;
     height: var(--outter-circle-diameter);
     width: var(--outter-circle-diameter);
     border-radius: 50%;
     position: absolute;
-    top: calc(50vh - var(--outter-circle-radius));
-    left: calc(50vw - var(--outter-circle-radius));
     z-index: -1;
     transition: 0.7s;
 }
@@ -60,13 +67,13 @@ body {
 }
 
 .menu a:nth-child(1) {
-    color: gray;
+    color: black;
     top:calc(var(--outter-circle-diameter)/5);
     left:calc(var(--outter-circle-diameter)/5);
 }
 
 .menu a:nth-child(2) {
-    color: gray;
+    color: black;
     top:calc(var(--outter-circle-diameter)/5);
     left:calc(var(--outter-circle-diameter) - calc(var(--outter-circle-diameter)/5) - var(--icon-size));
 }
@@ -76,7 +83,7 @@ body {
     left:calc(var(--outter-circle-diameter)/5);
 }
 .menu a:nth-child(4) {
-    color: gray;
+    color: black;
     top:calc(var(--outter-circle-diameter) - calc(var(--outter-circle-diameter)/5) - var(--icon-size));
     left:calc(var(--outter-circle-diameter) - calc(var(--outter-circle-diameter)/5) - var(--icon-size));
 }
