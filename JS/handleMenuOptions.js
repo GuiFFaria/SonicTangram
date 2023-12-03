@@ -102,6 +102,7 @@ function handleMenu() {
                 isRecording = !isRecording
 
                 if (isRecording) {
+                    document.body.style.border = '1px solid red'
                     start()
                 } else {
                     stop()
@@ -122,9 +123,8 @@ function handleMenu() {
             if (e.clientX < posX && e.clientY > posY) {
                 // Q3 INFO OPTION
                 console.log("info")
-                var popup = document.getElementById("popup");
-                popup.classList.toggle("show");
-                popup.style.visibility = 'visible'
+                var popup = document.getElementById("popup")
+                popup.classList.toggle("hide")
             }
         }
     })
