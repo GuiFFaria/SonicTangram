@@ -11,14 +11,6 @@ function addTangramPieces() {
         box.appendChild(piece)
     }
 
-    //add menu
-    const menu = document.createElement('img')
-    menu.src = '../images/menu1.svg'
-    menu.setAttribute('id', 'menu')
-    menu.classList.add('shape')
-
-    box.appendChild(menu)
-
     document.body.appendChild(box)
 }
 

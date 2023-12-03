@@ -1,3 +1,13 @@
+:root {
+    --container-size:12vw;
+    --outter-circle-radius: 5vw;
+    --outter-circle-diameter: 10vw;
+    --inner-circle-radius: 2vw;
+    --inner-circle-diameter: 4vw;
+    --plus-size: 2vw;
+    --icon-size: 1.5vw;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -6,11 +16,12 @@ html, body {
     height: 100%;
     background-color: rgb(240,240,240);
     overflow: hidden;
-  }
-  canvas {
+}
+
+canvas {
     background-color: rgb(240,240,240);
     display: block;
-  }
+}
 
 
 /*Página inicial - Start*/
@@ -99,6 +110,83 @@ html, body {
     z-index: 0;
     width: 15vw;
     height: 15vw;
-  }
-  
+}
+
+
+
+
+.container {
+    display: grid;
+    place-items: center;
+    grid-template-rows: auto;
+    position: absolute;
+    top: calc(50vh - var(--container-size));
+    left: calc(50vw - var(--container-size));
+    height: 30vw;
+    width: 30vw;
+}
+.toggle {
+    align-self: stretch;
+    background: gray;
+    opacity: 70%;
+    height: var(--inner-circle-diameter);
+    width: var(--inner-circle-diameter);
+    margin: auto;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.toggle i {
+    font-size: var(--plus-size);
+    color: white;
+    opacity: 70%;
+    display: block;
+    margin-top: calc(var(--inner-circle-radius) - calc(var(--plus-size)/2));
+    transition: 0.7s;
+
+}
+
+.menu {
+    background: gray;
+    opacity: 50%;
+    height: var(--outter-circle-diameter);
+    width: var(--outter-circle-diameter);
+    border-radius: 50%;
+    position: absolute;
+    z-index: 0;
+    transition: 0.7s;
+    transform: scale(0);
+}
+
+.menu a{
+    display: inline-block;
+    position: absolute;
+    font-size: var(--icon-size);
+    /* color: black; */
+    transition: 0.4s;
+}
+
+.menu a:nth-child(1) {
+    color: black;
+    top:calc(var(--outter-circle-diameter)/5);
+    left:calc(var(--outter-circle-diameter)/5);
+}
+
+.menu a:nth-child(2) {
+    color: black;
+    top:calc(var(--outter-circle-diameter)/5);
+    left:calc(var(--outter-circle-diameter) - calc(var(--outter-circle-diameter)/5) - var(--icon-size));
+}
+.menu a:nth-child(3) {
+    color: red;
+    top:calc(var(--outter-circle-diameter) - calc(var(--outter-circle-diameter)/5) - var(--icon-size));
+    left:calc(var(--outter-circle-diameter)/5);
+}
+.menu a:nth-child(4) {
+    color: black;
+    top:calc(var(--outter-circle-diameter) - calc(var(--outter-circle-diameter)/5) - var(--icon-size));
+    left:calc(var(--outter-circle-diameter) - calc(var(--outter-circle-diameter)/5) - var(--icon-size));
+}
   
