@@ -16,14 +16,19 @@ body, html {
 
 .svgwave path {
     fill: transparent;
-    stroke: rgb(255, 0, 0);
+   /* stroke: rgb(255, 0, 0);*/
     stroke-width: 1px;
     transform-origin: center center; /* Define o ponto de origem da transformação no centro */
-
+    transform: scaleX(1.2) scaleY(-1); /*o scaleY muda a orientação do texto para ficar omnidirecional*/
+    /*transform: scaleX(var(--scaleX, 1));
+            transition: transform 0.5s ease; */
 }
 
 .svgwave text {
     font-size: 4rem; /* Usando unidades vw para tornar o tamanho responsivo */
     fill: black;
     font-family: 'Outfit', sans-serif; /* Certifique-se de usar font-family válida */
+}
+.my-text {
+    text-anchor: middle;
 }
