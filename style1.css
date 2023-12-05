@@ -18,6 +18,8 @@ body, html {
     fill: transparent;
     stroke: rgb(255, 0, 0);
     stroke-width: 1px;
+    transform-origin: center center; /* Define o ponto de origem da transformação no centro */
+
 }
 
 .svgwave text {
