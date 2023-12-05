@@ -1,18 +1,27 @@
-svg.svgwave {
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}  
+
+.svg-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.svgwave {
     width: 100%;
-    height: auto;
-    overflow: visible;
+    height: 100%;
 }
 
-svg.svgwave path {
-    fill:transparent;
-  stroke:red;
-    stroke-width:1px;
+.svgwave path {
+    fill: transparent;
+    stroke: rgb(255, 0, 0);
+    stroke-width: 1px;
 }
 
-svg.svgwave text {
-    font-size:4rem;
+.svgwave text {
+    font-size: 4rem; /* Usando unidades vw para tornar o tamanho responsivo */
     fill: black;
-    font-family: Outfit ;
- 
+    font-family: 'Outfit', sans-serif; /* Certifique-se de usar font-family válida */
 }
