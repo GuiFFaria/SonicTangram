@@ -69,6 +69,9 @@ function draw() {
   fill(0);
  
 
+  document.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    },{passive: false});
   // function event listener for mouse events when the div .arrow is pressed, the function playSound is called, when the div .arrow is released, the function stopSound is called
 
 
@@ -148,7 +151,7 @@ function draw() {
   // Adiciona o event listener a cada peça
   var pieces = document.querySelectorAll('.shape');
   pieces.forEach(function(piece) {
-    piece.addEventListener('click', rotatePiece);
+    piece.addEventListener('touchstart', rotatePiece);
   });
 
 

@@ -11,11 +11,46 @@
 html, body {
     margin: 0;
     padding: 0;
+    margin-left: 0;
     font-family: outfit;
     width: 100%;
     height: 100%;
     background-color: rgb(240,240,240);
     overflow: hidden;
+    position: fixed;
+}
+
+
+/* ==== SONIC TANGRAM TITLE CONTAINER ===== */
+
+.body-index {
+    background-image: url("../images/paper_background.svg") no-repeat;
+    background-size: auto 100vh;
+}
+.container-start-page {
+    z-index: 1;
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+}
+
+.logo-container {
+    grid-row-start: 1;
+    height: fit-content;
+    width: 55vw;
+}
+
+.start-button-container {
+    grid-row-start: 2;
+    width: 15vw;
+}
+
+#gesture-area {
+    width: 15vw;
+    height: 15vw;
 }
 
 canvas {
@@ -25,12 +60,23 @@ canvas {
 }
 
 
+.scale-element {
+    display: block;
+    max-width: 100%;
+    margin: 1rem auto;
+    touch-action: none;
+}
+  
+.reset {
+transition: transform 0.3s ease-in-out;
+}
+
 /*Página inicial - Start*/
 .logo{
     position:absolute;
-    text-align: center; 
-    top: 34%;
-    width: 100%;
+    top: 40%;
+    left: 10%;
+    width: 55%;
     text-transform: uppercase; 
     word-wrap: break-word;
     color: black;
@@ -78,6 +124,7 @@ canvas {
 }
 
 .popup .popupText{
+    font-size:7px;
     visibility: visible;
     width: 30%;
     background-color: #dadada;
@@ -105,13 +152,13 @@ canvas {
   }
 
 .shape {
-    display: flex;
+    display: block;
     touch-action: none;
     position: relative;
+    max-width: 100%;
     z-index: 0;
     width: 15vw;
     height: 15vw;
-    transform-origin: center center;
 }
 
 .prevent-select {
@@ -128,12 +175,12 @@ canvas {
     position: absolute;
     top: calc(50vh - var(--container-size));
     left: calc(50vw - var(--container-size));
-    height: 30vw;
-    width: 30vw;
+    height: fit-content;
+    width: fit-content;
 }
 .toggle {
     align-self: stretch;
-    background: gray;
+    background: #A7A9AC;
     opacity: 70%;
     height: var(--inner-circle-diameter);
     width: var(--inner-circle-diameter);
@@ -155,8 +202,8 @@ canvas {
 }
 
 .menu {
-    background: gray;
-    opacity: 50%;
+    background: #A7A9AC;
+    opacity: 30%;
     height: var(--outter-circle-diameter);
     width: var(--outter-circle-diameter);
     border-radius: 50%;
