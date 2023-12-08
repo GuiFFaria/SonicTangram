@@ -48,7 +48,6 @@ function preload() {
 }
 
 function setup() {
-  textFont("Arial");
   angleMode(DEGREES);
   let canvas = createCanvas(windowWidth, windowHeight);
   //adicionar canvas com class 'objects'
