@@ -100,7 +100,7 @@ function createMenu() {
     
     
     const container = document.createElement('div')
-    container.classList.add('container-menu', 'draggable')
+    container.classList.add('container', 'draggable')
     container.setAttribute('id', 'menu')
 
 
