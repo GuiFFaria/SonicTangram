@@ -86,7 +86,7 @@ function createMenu() {
     
     
     let icons = [["bi", "bi-moon-stars-fill"], ["bi", "bi-shuffle"],["bi","bi-record-fill"], ["bi","bi-info-lg"], ["bi", "bi-arrow-clockwise"], ["bi", "bi-check-lg"]]
-    let ids = ["mode", "shuffle", "record", "info", "reset"]
+    let ids = ["mode", "shuffle", "record", "info", "reset", "finish"]
 
     for (let i = 0; i < 6; i++) {
         const a = document.createElement('a')
@@ -191,6 +191,22 @@ function handleMenuOptions() {
     // finish option
     finish.addEventListener("click", function(e) {
         //TODO: add finish option
+        console.log("click")
+        var box = document.getElementById("box")
+
+        html2canvas(box, {
+            scale: window.devicePixelRatio,
+            ignoreElements: function (element) {
+                return (element.classList.contains("toggle"))
+            }
+        }).then(function(canvas) {
+            const base64image = canvas.toDataURL("image/png");
+            var anchor = document.createElement('a');
+            anchor.setAttribute("href", base64image)
+            anchor.setAttribute("download", "my-graphic-score.png")
+            anchor.click();
+            anchor.remove();
+        })
     })
 
 
@@ -199,3 +215,4 @@ function handleMenuOptions() {
 createMenu()
 expandMenu()
 handleMenuOptions()
+
