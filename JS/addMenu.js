@@ -100,7 +100,7 @@ function createMenu() {
     
     
     const container = document.createElement('div')
-    container.classList.add('container', 'shape')
+    container.classList.add('container', 'draggable')
     container.setAttribute('id', 'menu')
 
 
@@ -173,7 +173,7 @@ function handleMenuOptions() {
         isRecording = !isRecording
 
         if (isRecording) {
-            document.body.style.border = '1px solid red'
+            document.body.style.border = '4px solid red'
             start()
         } else {
             stop()

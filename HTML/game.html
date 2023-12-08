@@ -4,6 +4,7 @@
 <!-- TODO: porque é que existem 2 ficheiros CSS? -->
 
 <head>
+  
   <link rel="stylesheet" type="text/css" href="../CSS/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.2/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.2/addons/p5.dom.min.js"></script>
@@ -11,36 +12,58 @@
   <script src="./node_modules/interactjs/dist/interact.js"></script>
   <!--<link rel="stylesheet" type="text/css" href="../CSS/styleGame.css">-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 
-<body>
-
+<body ontouchmove="event.preventDefault()">
   <!-- TODO: se possível colocar todo este código do popup no ficheiro JS para o codigo ficar mais clean -->
-  
+  <main>
   <div class="popup" id="Popup">
     <span class="popupText" id="popup">
-      <h3>How to play</h3>
-      Construct a shape using 7 or more pieces. 
-      Each piece has a sound.
-      When the shape is formed you will 
-      have a melody/sound composition. Use the quote as inspiration. <br/>
+      <h2>How to play</h3>
+      <p class="text">
+        Welcome to Sonic Tangram, an immersive experience where art and music seamlessly converge! <br/>
+        Arrange the tangram pieces to form captivating shapes and designs on the canvas. <br/>
+        Every move you make produces a unique musical sound, creating a personalized soundtrack for your tangram composition. <br/>
+      </p>
+      
         <br/>
           <div style="width: 50%; margin-left: 36%; text-align: left;">
-          <i class="bi bi-record-fill" style="color: red; margin-right: 8px;"></i>Record screen <br/>
-          <i class="bi bi-moon-stars-fill" style="margin-right: 8px;"></i>Change mode <br/>
-          <i class="bi bi-info-lg" style="margin-right: 8px;"></i>How to play <br/>
-          <i class="bi bi-shuffle" style="margin-right: 8px;"></i>Get a new quote <br/>
+          <i class="bi bi-record-fill icons" style="color: red; margin-right: 8px;"></i>Record your composition <br/>
+          <i class="bi bi-moon-stars-fill icons" style="margin-right: 8px;"></i>Change mode <br/>
+          <i class="bi bi-info-lg icons" style="margin-right: 8px;"></i>How to play <br/>
+          <i class="bi bi-shuffle icons" style="margin-right: 8px;"></i>Get a new inspirational prompt <br/>
           <br/>
         </div>
-        <div id="botaoFechar" onclick="myFunction()"><img style="height: 40px; width: 40px;" src="../images/botaoFechar.png" alt="Fechar"></div>
+        <i  id="botaoFechar" onclick="myFunction()" class="bi bi-x-lg close-button" ></i>
+        <!-- <div id="botaoFechar" onclick="myFunction()"><img style="height: 40px; width: 40px;" src="../images/botaoFechar.png" alt="Fechar"></div> -->
       </span>
+    
+      <div class="svg-container">
+        <svg class="svgwave" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350 750 ">
+            <path id="wavepath"
+                d="M147.56,69.4H1218.44c43.08,0,78,29.13,78,65.06V633.54c0,35.93-34.92,65.06-78,65.06H147.56c-43.08,0-78-29.13-78-65.06V134.46C69.56,98.53,104.48,69.4,147.56,69.4Z"/>
+
+            <text text-anchor="middle">
+                <textPath class="my-text prevent-select" href="#wavepath" startOffset="0%">
+                    <animate attributeName="startOffset" from="0%" to="100%" begin="0s" dur="35s"
+                        repeatCount="indefinite">
+                    </animate>
+                    I am a cage in search of a bird
+                </textPath>
+            </text>
+        </svg>
+    </div>
+    </main>
   </div>
 
-
+  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
   <script src="../JS/addTangramPieces.js"></script>
   <script src="../JS/scriptComposicao.js"></script>
   <script src="../JS/addMenu.js"></script>
-  <script src="../JS/sketch.js"></script>
+  <script src="../JS/handlePieceMovements.js"></script>
+  <!-- <script src="../JS/sketch.js"></script> -->
   <script src="../JS/movePieces.js"></script>
   
 </body>

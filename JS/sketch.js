@@ -2,7 +2,7 @@
 let infoImg
 var melody
 var melodyVolume = 0.1;
-
+let music = false;
 
 
 let sounds1 = new Array(3);
@@ -48,7 +48,6 @@ function preload() {
 }
 
 function setup() {
-  textFont("Arial");
   angleMode(DEGREES);
   let canvas = createCanvas(windowWidth, windowHeight);
   //adicionar canvas com class 'objects'
@@ -69,6 +68,9 @@ function draw() {
   fill(0);
  
 
+  document.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    },{passive: false});
   // function event listener for mouse events when the div .arrow is pressed, the function playSound is called, when the div .arrow is released, the function stopSound is called
 
 
@@ -95,6 +97,63 @@ function draw() {
 
 
 
+  //--------------------------------------------------------------------------------------
+  let mouseDownTime;
+  let mouseUpTime;
+
+  document.addEventListener('mousedown', function(event) {
+      // Record the time when the mouse button is pressed down
+      mouseDownTime = new Date().getTime();
+  });
+
+  document.addEventListener('mouseup', function(event) {
+      // Record the time when the mouse button is released
+      mouseUpTime = new Date().getTime();
+
+      // Calculate the duration in seconds
+      const durationInSeconds = (mouseUpTime - mouseDownTime) / 1000;
+
+      // Log the duration to the console
+      console.log('Mouse press duration:', durationInSeconds, 'seconds');
+
+      // Distinguish between a click and a press based on the duration
+      if (durationInSeconds < 1.0) {
+          music = false;
+      } else {
+          music = true;
+      }
+  });
+
+//--------------------------------------------------------------------------------------
+  // EVENT LISTENER TO ROTATE THE PIECES ON DOUBLE CLICK
+
+  function rotatePiece(event) {
+
+    music = true;
+    // Obtém o elemento clicado
+    var piece = event.target;
+    
+    // Obtém a matriz de transformação atual
+    var transformMatrix = new DOMMatrix(piece.style.transform);
+
+    // Obtém o ângulo atual de rotação
+    var currentRotation = Math.atan2(transformMatrix.b, transformMatrix.a) * (180 / Math.PI);
+
+    // Adiciona 45 graus à rotação atual
+    var newRotation = currentRotation + 45;
+
+    // Aplica a rotação ao elemento mantendo a posição
+    piece.style.transform = 'translate(' + transformMatrix.m41 + 'px, ' + transformMatrix.m42 + 'px) rotate(' + newRotation + 'deg)';
+  }
+
+
+  // Adiciona o event listener a cada peça
+  var pieces = document.querySelectorAll('.shape');
+  pieces.forEach(function(piece) {
+    piece.addEventListener('touchstart', rotatePiece);
+  });
+
+
   /*use interact.js to drag and drop the shapes*/
   function dragMoveListener(event) {
     var target = event.target
@@ -102,16 +161,22 @@ function draw() {
     var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
     var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
 
+    // get the actual rotation of the element
+    var transformMatrix = new DOMMatrix(target.style.transform);
+    var currentRotation = Math.atan2(transformMatrix.b, transformMatrix.a) * (180 / Math.PI);
+
+
     // translate the element
     target.style.webkitTransform =
       target.style.transform =
-      'translate(' + x + 'px, ' + y + 'px)'
+      'translate(' + x + 'px, ' + y + 'px) rotate(' + currentRotation + 'deg)'
 
     // update the posiion attributes
     target.setAttribute('data-x', x)
     target.setAttribute('data-y', y)
   }
 
+  
   interact('.shape')
     .draggable({
       // enable inertial throwing
@@ -143,12 +208,12 @@ function draw() {
       }
     }
   )
-
+/*
 
   // this is used later in the resizing demo
   window.dragMoveListener = dragMoveListener
 
-  // use interact.js to resize with pinch gesture*/
+  // use interact.js to resize with pinch gesture
   var angleScale = {
     angle: 0,
     scale: 1
@@ -157,21 +222,23 @@ function draw() {
   var scaleElement = document.querySelector('.shape')
   var resetTimeout
   
-  interact(gestureArea)
+  interact('.shape')
     .gesturable({
       listeners: {
         start (event) {
           angleScale.angle -= event.angle
   
-          clearTimeout(resetTimeout)
-          scaleElement.classList.remove('reset')
+          //clearTimeout(resetTimeout)
+          //scaleElement.classList.remove('reset')
         },
         move (event) {
           // document.body.appendChild(new Text(event.scale))
           var currentAngle = event.angle + angleScale.angle
           var currentScale = event.scale * angleScale.scale
+
+          var target = event.target
   
-          scaleElement.style.transform =
+          target.style.webkitTransform =  scaleElement.style.transform =
             'rotate(' + currentAngle + 'deg)' + 'scale(' + currentScale + ')'
   
           // uses the dragMoveListener from the draggable demo above
@@ -181,8 +248,8 @@ function draw() {
           angleScale.angle = angleScale.angle + event.angle
           angleScale.scale = angleScale.scale * event.scale
   
-          resetTimeout = setTimeout(reset, 1000)
-          scaleElement.classList.add('reset')
+          //resetTimeout = setTimeout(reset, 1000)
+          //scaleElement.classList.add('reset')
         }
       }
     })
@@ -196,7 +263,7 @@ function draw() {
     angleScale.angle = 0
     angleScale.scale = 1
   }
-
+*/
   /*use interact.js to resize with mouse the shapes*/
   /*
   interact('.shape')
@@ -252,26 +319,6 @@ function draw() {
       inertia: true
     })
     */  
-    // rotate
-    
-    var angle = 0
-    interact('.shape')
-      .gesturable({
-        listeners: {
-          move(event) {
-            var objects = document.getElementsByClassName('shape')
-
-            angle += event.da
-
-            for (var i = 0; i < objects.length; i++) {
-              console.log(objects[i])
-                objects[i].style.transform =
-                'rotate(' + angle + 'deg)'
-            }
-
-          }
-        }
-      })
       
 }
 
@@ -284,79 +331,94 @@ function draw() {
 podia ser uma só função com um switch por exemplo */
 
 function mousepressed1() {
-
+  console.log(music);
   console.log("mouse pressed");
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds1[rand].setVolume(0.1);
-  sounds1[rand].loop();
-
+  if(music == true){
+    sounds1[rand].setVolume(0.1);
+    sounds1[rand].loop();
+  }
+  music = false;
 }
 
 function mousepressed2() {
-
+  console.log(music);
   console.log("mouse pressed");
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds2[rand].setVolume(0.1);
-  sounds2[rand].loop();
-
+  if(music == true){
+    sounds2[rand].setVolume(0.1);
+    sounds2[rand].loop();
+  }
+  music = false;
 }
 
 function mousepressed3() {
-
+  console.log(music);
   console.log("mouse pressed");
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds3[rand].setVolume(0.1);
-  sounds3[rand].loop();
-
+  if(music == true){
+    sounds3[rand].setVolume(0.1);
+    sounds3[rand].loop();
+  }
+  music = false;
 }
 
 function mousepressed4() {
-
+  console.log(music);
   console.log("mouse pressed");
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds4[rand].setVolume(0.1);
-  sounds4[rand].loop();
-
+  if(music == true){
+    sounds4[rand].setVolume(0.1);
+    sounds4[rand].loop();
+  }
+  music = false;
 }
 
 function mousepressed5() {
-
+  console.log(music);
   console.log("mouse pressed");
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds5[rand].setVolume(0.1);
-  sounds5[rand].loop();
-
+  if(music == true){
+    sounds5[rand].setVolume(0.1);
+    sounds5[rand].loop();
+  }
+  music = false;
 }
 
 function mousepressed6() {
-
+  console.log(music);
   console.log("mouse pressed");
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds6[rand].setVolume(0.1);
-  sounds6[rand].loop();
+  if(music == true){
+    sounds6[rand].setVolume(0.1);
+    sounds6[rand].loop();
+  }
+  music = false;
 }
 
 function mousepressed7() {
-
+  console.log(music);
   console.log("mouse pressed");
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds7[rand].setVolume(0.1);
-  sounds7[rand].loop();
-
+  if(music == true){
+    sounds7[rand].setVolume(0.1);
+    sounds7[rand].loop();
+  }
+  music = false;
 }
 
 function mousereleased1() {
