@@ -1,5 +1,4 @@
-/*
-const pieces = document.querySelectorAll(".tangram-piece");
+/* const pieces = document.querySelectorAll(".tangram-piece");
 
 let speed = 0.7;
 
@@ -66,4 +65,4 @@ document.addEventListener('touchmove', function (event) {
         event.preventDefault(); // Impede o scroll durante o toque
     }
 });
-*/
+ */

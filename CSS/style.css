@@ -21,6 +21,23 @@ html, body {
 }
 
 
+.scale-element {
+    display: block;
+    max-width: 100%;
+    margin: 1rem auto;
+    touch-action: none;
+  }
+
+
+.container.-enu {
+    width: fit-content;
+    height: fit-content;
+}
+.container {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+}
 /* ==== SONIC TANGRAM TITLE CONTAINER ===== */
 
 
