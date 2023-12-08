@@ -3,9 +3,12 @@ html, body {
     padding: 0;
     background-color: rgb(240,240,240);
     overflow: hidden;
+    width: 100%;
+    height: 100%;
   }
   canvas {
     background-color: rgb(240,240,240);
     display: block;
+    overflow: hidden;
   }
  

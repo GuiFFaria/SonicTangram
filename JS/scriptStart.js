@@ -56,3 +56,5 @@ function startMovement(shape) {
     movePiece(); // Inicia o movimento contínuo das peças
     console.log("movePiece");
 }
+
+

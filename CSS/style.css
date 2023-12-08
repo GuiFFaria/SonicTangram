@@ -21,6 +21,7 @@ html, body {
 canvas {
     background-color: rgb(240,240,240);
     display: block;
+    overflow: hidden;
 }
 
 
@@ -103,7 +104,7 @@ canvas {
     z-index: 0;
   }
 
-  .shape {
+.shape {
     display: flex;
     touch-action: none;
     position: absolute;
