@@ -85,13 +85,14 @@ function createMenu() {
     menuDiv.setAttribute('id', 'menuDiv')
     
     
-    let icons = [["bi", "bi-moon-stars-fill"], ["bi", "bi-shuffle"],["bi","bi-record-fill"], ["bi","bi-info-lg"]]
-    let ids = ["mode", "shuffle", "record", "info"]
+    let icons = [["bi", "bi-moon-stars-fill"], ["bi", "bi-shuffle"],["bi","bi-record-fill"], ["bi","bi-info-lg"], ["bi", "bi-arrow-clockwise"], ["bi", "bi-check-lg"]]
+    let ids = ["mode", "shuffle", "record", "info", "reset"]
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 6; i++) {
         const a = document.createElement('a')
         const icon = document.createElement('i')
         icon.classList.add(icons[i][0], icons[i][1])
+        
         a.href = '#'
         icon.setAttribute('id', ids[i])
         a.appendChild(icon)
@@ -136,6 +137,8 @@ function handleMenuOptions() {
     const shuffle = document.getElementById('shuffle')
     const info = document.getElementById('info')
     const record = document.getElementById('record')
+    const reset = document.getElementById('reset')
+    const finish = document.getElementById('finish')
 
     // change mode option
     mode.addEventListener("click", function(e) {
@@ -179,6 +182,18 @@ function handleMenuOptions() {
             stop()
         }
     })
+
+    // reset option
+    reset.addEventListener("click", function(e) {
+        window.location.reload()
+    })
+
+    // finish option
+    finish.addEventListener("click", function(e) {
+        //TODO: add finish option
+    })
+
+
 }
 
 createMenu()

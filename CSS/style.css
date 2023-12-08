@@ -293,25 +293,39 @@ transition: transform 0.3s ease-in-out;
     transition: 0.4s;
 }
 
+
 .menu a:nth-child(1) {
     color: black;
-    top:calc(var(--outter-circle-diameter)/5);
-    left:calc(var(--outter-circle-diameter)/5);
+    top: calc(var(--outter-circle-diameter)/6);
+    left: calc(var(--outter-circle-diameter)/4);
 }
 
 .menu a:nth-child(2) {
     color: black;
-    top:calc(var(--outter-circle-diameter)/5);
-    left:calc(var(--outter-circle-diameter) - calc(var(--outter-circle-diameter)/5) - var(--icon-size));
+    top: calc(var(--outter-circle-diameter)/6);
+    left: calc(var(--outter-circle-diameter) - var(--icon-size) - var(--outter-circle-diameter)/4);
 }
+
 .menu a:nth-child(3) {
     color: red;
-    top:calc(var(--outter-circle-diameter) - calc(var(--outter-circle-diameter)/5) - var(--icon-size));
-    left:calc(var(--outter-circle-diameter)/5);
+    top:calc(var(--outter-circle-diameter) - calc(var(--outter-circle-diameter)/7) - var(--icon-size));
+    left: calc(var(--outter-circle-diameter)/3 - var(--icon-size)/2);
 }
+
 .menu a:nth-child(4) {
     color: black;
-    top:calc(var(--outter-circle-diameter) - calc(var(--outter-circle-diameter)/5) - var(--icon-size));
-    left:calc(var(--outter-circle-diameter) - calc(var(--outter-circle-diameter)/5) - var(--icon-size));
+    top: calc(var(--outter-circle-diameter) - var(--icon-size) - var(--outter-circle-diameter)/7);
+    left: calc(var(--outter-circle-diameter) - var(--icon-size) - var(--outter-circle-diameter)/4);
 }
-  
+
+.menu a:nth-child(5) {
+    color: black;
+    top: calc(var(--outter-circle-diameter)/1.9 - var(--icon-size)/2);
+    left: calc(var(--outter-circle-diameter)/4 - var(--icon-size));
+}
+
+.menu a:nth-child(6) {
+    color: black;
+    top: calc(var(--outter-circle-diameter)/2 - var(--icon-size)/2);
+    left: calc(var(--outter-circle-diameter) - var(--icon-size) - var(--outter-circle-diameter)/8);
+}
