@@ -23,6 +23,43 @@ html, body {
 
 /* ==== SONIC TANGRAM TITLE CONTAINER ===== */
 
+
+.svg-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.svgwave {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.svgwave path {
+    fill: transparent;
+   /* stroke: rgb(255, 0, 0);*/
+    stroke-width: 1px;
+    transform-origin: 52% 51%; /* Define o ponto de origem da transformação no centro */
+    transform: scaleX(1.3) scaleY(-1); /*o scaleY muda a orientação do texto para ficar omnidirecional*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    /*transform: scaleX(var(--scaleX, 1));
+            transition: transform 0.5s ease; */
+}
+
+.svgwave text {
+    font-size: 3rem; 
+    fill: black;
+    font-family: 'Outfit', sans-serif; 
+}
+.my-text {
+    text-anchor: middle;
+}
+
 .body-index {
     background-image: url("../images/paper_background.svg") no-repeat;
     background-size: auto 100vh;

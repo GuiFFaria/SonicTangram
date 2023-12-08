@@ -17,7 +17,7 @@
 
 <body ontouchmove="event.preventDefault()">
   <!-- TODO: se possível colocar todo este código do popup no ficheiro JS para o codigo ficar mais clean -->
-  
+  <main>
   <div class="popup" id="Popup">
     <span class="popupText" id="popup">
       <h3>How to play</h3>
@@ -35,6 +35,23 @@
         </div>
         <div id="botaoFechar" onclick="myFunction()"><img style="height: 40px; width: 40px;" src="../images/botaoFechar.png" alt="Fechar"></div>
       </span>
+    
+      <div class="svg-container">
+        <svg class="svgwave" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350 750 ">
+            <path id="wavepath"
+                d="M147.56,69.4H1218.44c43.08,0,78,29.13,78,65.06V633.54c0,35.93-34.92,65.06-78,65.06H147.56c-43.08,0-78-29.13-78-65.06V134.46C69.56,98.53,104.48,69.4,147.56,69.4Z"/>
+
+            <text text-anchor="middle">
+                <textPath class="my-text" href="#wavepath" startOffset="0%">
+                    <animate attributeName="startOffset" from="0%" to="100%" begin="0s" dur="35s"
+                        repeatCount="indefinite">
+                    </animate>
+                    I am a cage in search of a bird
+                </textPath>
+            </text>
+        </svg>
+    </div>
+    </main>
   </div>
 
 
