@@ -216,7 +216,7 @@ transition: transform 0.3s ease-in-out;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap-reverse;
-    z-index: 0;
+    z-index: 1;
   }
 
 .shape {
@@ -224,9 +224,9 @@ transition: transform 0.3s ease-in-out;
     touch-action: none;
     position: relative;
     max-width: 100%;
-    z-index: 0;
     width: 15vw;
     height: 15vw;
+    z-index: 1;
 }
 
 .prevent-select {

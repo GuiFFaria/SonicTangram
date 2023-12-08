@@ -2,6 +2,7 @@ function addTangramPieces() {
     // Create box
     const box = document.createElement('div')
     box.classList.add('box')
+    box.setAttribute('id', 'box')
 
     // Add tangram pieces
     for (let i = 0; i < 7; i++) {
