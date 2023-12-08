@@ -5,7 +5,7 @@ function addTangramPieces() {
     //add tangram pieces
     for (let i = 0; i < 7; i++) {
         const piece = document.createElement('img')
-        piece.classList.add('shape', 'tangram-piece')
+        piece.classList.add('shape', 'tangraminicial')
         piece.setAttribute('id', `piece${i+1}`)
         piece.src = `../tangram_pieces/p${i+1}.svg`
         box.appendChild(piece)
@@ -21,7 +21,7 @@ function main() {
 
 main()
 
-const pieces = document.querySelectorAll(".tangram-piece");
+const pieces = document.querySelectorAll(".tangraminicial");
 
 
 pieces.forEach((shape) => {
