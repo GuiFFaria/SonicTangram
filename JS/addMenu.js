@@ -1,7 +1,31 @@
+let quotes = [  "I AM A CAGE IN SEARCH OF A BIRD",  "THE COSMOS IS WITHIN US. WE ARE MADE OF STAR-STUFF. WE ARE A WAY FOR THE UNIVERSE TO KNOW ITSELF",  "CATS ARE LIKE MUSIC. IT'S FOOLISH TO TRY TO EXPLAIN THEIR WORTH TO THOSE WHO DON'T APPRECIATE THEM",  "THE SEA, ONCE IT CASTS ITS SPELL, HOLDS ONE IN ITS NET OF WONDER FOREVER",  "THE MORE ABSTRACT IS FORM, THE MORE CLEAR AND DIRECT ITS APPEAL.",  "NUMBERS HAVE LIFE; THEY'RE NOT JUST SYMBOLS ON PAPER",  "WITHOUT MUSIC, LIFE WOULD BE A MISTAKE",  "MUSICAL INSTRUMENTS ARE EXTENSIONS OF WHO WE ARE",  "I CALL ARCHITECTURE FROZEN MUSIC",  "UNTIL ONE HAS LOVED AN ANIMAL, A PART OF ONE'S SOUL REMAINS UNAWAKENED",  "THE ALPHABET IS THE SCIENCE AND ART OF CONSTRUCTING AND USING LETTERS",  "KEEP YOUR EYES ON THE STARS, AND YOUR FEET ON THE GROUND",  "A ROOM WITHOUT BOOKS IS LIKE A BODY WITHOUT A SOUL",  "THE COMPUTER WAS AN INVENTION WAITING TO BE MADE",  "TO LOVE AND BE LOVED IS TO FEEL THE SUN FROM BOTH SIDES",]
+
 var i = 0
 let mediaRecorder
 let menuNo = 1
 let isRecording = false
+
+function downloadImage() {
+    var print = document.getElementById('box')
+
+    html2canvas(print, {
+        scale: window.devicePixelRatio,
+        ignoreElements: function (element) {
+            return (element.classList.contains("container"))
+        }
+    }).then(function(canvas) {
+        const base64image = canvas.toDataURL("image/png");
+        var anchor = document.createElement('a');
+        anchor.setAttribute("href", base64image)
+        anchor.setAttribute("download", "my-tangram-composition.png")
+        anchor.click();
+        anchor.remove();
+    })
+
+    /* downloadButton.addEventListener("click", () => { */
+    /* }) */
+}
+
 
 function distance(x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
@@ -86,25 +110,9 @@ function createMenu() {
     
     
     let icons = [["bi", "bi-moon-stars-fill"], ["bi", "bi-shuffle"],["bi","bi-record-fill"], ["bi","bi-info-lg"], ["bi", "bi-arrow-clockwise"], ["bi", "bi-check-lg"]]
-    let ids = ["mode", "shuffle", "record", "info", "reset"]
-    let quotes = [ "I am a cage in search of a bird",
-                   "The cosmos is within us. We are made of star-stuff. We are a way for the universe to know itself",
-                   "Cats are like music. It's foolish to try to explain their worth to those who don't appreciate them",
-                   "The sea, once it casts its spell, holds one in its net of wonder forever",
-                   "The more abstract is form, the more clear and direct its appeal.",
-                   "Numbers have life; they're not just symbols on paper",
-                   "Without music, life would be a mistake",
-                   "Musical instruments are extensions of who we are",
-                   "I call architecture frozen music",
-                   "Until one has loved an animal, a part of one's soul remains unawakened",
-                   "The alphabet is the science and art of constructing and using letters",
-                   "Keep your eyes on the stars, and your feet on the ground",
-                   "A room without books is like a body without a soul",
-                   "The computer was an invention waiting to be made",
-                   "To love and be loved is to feel the sun from both sides",
-
-    ]
+    let ids = ["mode", "shuffle", "record", "info", "reset", 'finish']
     
+
     for (let i = 0; i < 6; i++) {
         const a = document.createElement('a')
         const icon = document.createElement('i')
@@ -162,24 +170,52 @@ function handleMenuOptions() {
         let modes = ["bi-brightness-high-fill", "bi-moon-stars-fill"]
         let icon = document.getElementById('mode')
         if (menuNo % 2 != 0) {
-            //light
-            console.log("light:" + menuNo)
-            menuNo--
-            document.body.style.background = '#202125'
+            //dark
+            
+            document.body.style.background = 'linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px, linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px, linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px, linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px, linear-gradient(90deg, #1b1b1b 10px, transparent 10px), linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424)'
+            document.body.style.backgroundColor = '#131313'
+            document.body.style.backgroundSize = '20px 20px'
             icon.classList.remove(modes[1])
             icon.classList.add(modes[0])
+
+
+            for (let i = 0; i < 7; i++) {
+                const piece = document.getElementById(`piece${i+1}`)
+                piece.src = `../tangram_pieces/p${i+1}_2.svg`
+            }
+
+            menuNo--
         } else {
-            //dark
+            //light
+
             console.log("dark:" + menuNo)
-            menuNo++
-            document.body.style.background = 'rgb(240,240,240)'
+            console.log("light:" + menuNo)
+            document.body.style.backgroundColor = '#fff'
+            document.body.style.backgroundImage = 'linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),linear-gradient(#eee .1em, transparent .1em)'
+            document.body.style.backgroundSize = '100% 1.2em'
             icon.classList.remove(modes[0])
             icon.classList.add(modes[1])
+
+            for (let i = 0; i < 7; i++) {
+                const piece = document.getElementById(`piece${i+1}`)
+                piece.src = `../tangram_pieces/p${i+1}.svg`
+            }
+            menuNo++
         }
     })
 
     shuffle.addEventListener("click", function(e) {
-        // TODO: add shuffle 
+        const textPath = document.getElementById('text-path')
+        let randIndex = parseInt(Math.random() * quotes.length)
+        textPath.textContent = quotes[randIndex]
+        var animate = document.createElementNS("http://www.w3.org/2000/svg", "animate");
+        animate.setAttribute("attributeName", "startOffset");
+        animate.setAttribute("from", "0%");
+        animate.setAttribute("to", "100%");
+        animate.setAttribute("begin", "0s");
+        animate.setAttribute("dur", "35s");
+        animate.setAttribute("repeatCount", "indefinite");
+        textPath.appendChild(animate)
     })
 
     // info option
@@ -206,11 +242,15 @@ function handleMenuOptions() {
 
     // finish option
     finish.addEventListener("click", function(e) {
-        //TODO: add finish option
+        downloadImage()
+        
     })
 
 
 }
+
+
+
 
 createMenu()
 expandMenu()

@@ -56,6 +56,9 @@ html, body {
 }
 
 .svgwave {
+    position: absolute;
+    top: 15vh;
+    left: 0;
     width: 100%;
     height: 100%;
     overflow: visible;
@@ -63,7 +66,7 @@ html, body {
 
 .svgwave path {
     fill: transparent;
-   /* stroke: rgb(255, 0, 0);*/
+   /* stroke: rgb(255, 0, 0); */
     stroke-width: 1px;
     transform-origin: 52% 51%; /* Define o ponto de origem da transformação no centro */
     transform: scaleX(1.3) scaleY(-1); /*o scaleY muda a orientação do texto para ficar omnidirecional*/
@@ -75,8 +78,8 @@ html, body {
 }
 
 .svgwave text {
-    font-size: 3rem; 
-    fill: black;
+    font-size: 2.5rem; 
+    fill: #777777;
     font-family: 'Outfit', sans-serif; 
 }
 .my-text {
@@ -186,9 +189,20 @@ transition: transform 0.3s ease-in-out;
     font-size: 20px;
 }
 
+.text-path {
+    color: #777777;
+}
+
+.popup-items {
+    text-align: left;
+    position: relative;
+    left: 25%;
+}
+
 .popup{
-    opacity: 70%;
     position: absolute;
+    top: -15vh;
+    left: 0%;
     width: 100%;
     height: 100%;
     display: flex;
@@ -199,13 +213,15 @@ transition: transform 0.3s ease-in-out;
 .text {
     text-align: left;
 }
+
+
+
 .popup .popupText{
-    opacity: 70;
     font-size:16px;
     visibility: visible;
     width: 30%;
     height: fit-content;
-    background-color: #dadada;
+    background-color: #e8e6e6;
     text-align: center;
     border-radius: 10px;
     padding: 2%;
@@ -255,8 +271,10 @@ transition: transform 0.3s ease-in-out;
     place-items: center;
     grid-template-rows: auto;
     position: absolute;
-    top: calc(50vh - var(--container-size));
-    left: calc(50vw - var(--container-size));
+    top:  calc(50vh - var(--inner-circle-diameter));
+    left: calc(50vw - var(--inner-circle-diameter));
+    /* top: calc(50vh - var(--container-size));
+    left: calc(50vw - var(--container-size)); */
     height: fit-content;
     width: fit-content;
 }

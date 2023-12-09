@@ -22,42 +22,31 @@
   <div class="popup" id="Popup">
     <span class="popupText" id="popup">
       <h2>How to play</h3>
+
       <p class="text">
         Welcome to Sonic Tangram, an immersive experience where art and music seamlessly converge! <br/>
         Arrange the tangram pieces to form captivating shapes and designs on the canvas. <br/>
         Every move you make produces a unique musical sound, creating a personalized soundtrack for your tangram composition. <br/>
+        </br>
       </p>
-      
+      <!-- style="width: 50%; margin-left: 36%; text-align: left;" -->
+      <div class="popup-items">
+        <i class="bi bi-record-fill icons" style="color: red; margin-right: 8px;"></i>Record your composition <br/>
+        <i class="bi bi-moon-stars-fill icons" style="margin-right: 8px;"></i>Change mode <br/>
+        <i class="bi bi-info-lg icons" style="margin-right: 8px;"></i>How to play <br/>
+        <i class="bi bi-shuffle icons" style="margin-right: 8px;"></i>Get a new inspirational prompt <br/>
         <br/>
-          <div style="width: 50%; margin-left: 36%; text-align: left;">
-          <i class="bi bi-record-fill icons" style="color: red; margin-right: 8px;"></i>Record your composition <br/>
-          <i class="bi bi-moon-stars-fill icons" style="margin-right: 8px;"></i>Change mode <br/>
-          <i class="bi bi-info-lg icons" style="margin-right: 8px;"></i>How to play <br/>
-          <i class="bi bi-shuffle icons" style="margin-right: 8px;"></i>Get a new inspirational prompt <br/>
-          <br/>
-        </div>
-        <i  id="botaoFechar" onclick="myFunction()" class="bi bi-x-lg close-button" ></i>
+      </div>
+      
+      <i  id="botaoFechar" onclick="myFunction()" class="bi bi-x-lg close-button" ></i>
         <!-- <div id="botaoFechar" onclick="myFunction()"><img style="height: 40px; width: 40px;" src="../images/botaoFechar.png" alt="Fechar"></div> -->
       </span>
-    
-      <div class="svg-container">
-        <svg class="svgwave" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350 750 ">
-            <path id="wavepath"
-                d="M147.56,69.4H1218.44c43.08,0,78,29.13,78,65.06V633.54c0,35.93-34.92,65.06-78,65.06H147.56c-43.08,0-78-29.13-78-65.06V134.46C69.56,98.53,104.48,69.4,147.56,69.4Z"/>
-
-            <text text-anchor="middle">
-                <textPath id="text-path" class="my-text prevent-select" href="#wavepath" startOffset="0%">
-                    <animate attributeName="startOffset" from="0%" to="100%" begin="0s" dur="35s"
-                        repeatCount="indefinite">
-                    </animate>
-                    I am a cage in search of a bird
-                </textPath>
-            </text>
-        </svg>
-    </div>
+      
+      <div id="svg-container" class="svg-container"></div>
+      
     </main>
   </div>
-
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
   <script src="../JS/addTangramPieces.js"></script>
   <script src="../JS/scriptComposicao.js"></script>
