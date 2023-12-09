@@ -87,7 +87,24 @@ function createMenu() {
     
     let icons = [["bi", "bi-moon-stars-fill"], ["bi", "bi-shuffle"],["bi","bi-record-fill"], ["bi","bi-info-lg"], ["bi", "bi-arrow-clockwise"], ["bi", "bi-check-lg"]]
     let ids = ["mode", "shuffle", "record", "info", "reset"]
+    let quotes = [ "I am a cage in search of a bird",
+                   "The cosmos is within us. We are made of star-stuff. We are a way for the universe to know itself",
+                   "Cats are like music. It's foolish to try to explain their worth to those who don't appreciate them",
+                   "The sea, once it casts its spell, holds one in its net of wonder forever",
+                   "The more abstract is form, the more clear and direct its appeal.",
+                   "Numbers have life; they're not just symbols on paper",
+                   "Without music, life would be a mistake",
+                   "Musical instruments are extensions of who we are",
+                   "I call architecture frozen music",
+                   "Until one has loved an animal, a part of one's soul remains unawakened",
+                   "The alphabet is the science and art of constructing and using letters",
+                   "Keep your eyes on the stars, and your feet on the ground",
+                   "A room without books is like a body without a soul",
+                   "The computer was an invention waiting to be made",
+                   "To love and be loved is to feel the sun from both sides",
 
+    ]
+    
     for (let i = 0; i < 6; i++) {
         const a = document.createElement('a')
         const icon = document.createElement('i')
@@ -176,7 +193,6 @@ function handleMenuOptions() {
         isRecording = !isRecording
 
         if (isRecording) {
-            document.body.style.border = '4px solid red'
             start()
         } else {
             stop()
