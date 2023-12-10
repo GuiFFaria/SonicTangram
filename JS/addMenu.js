@@ -6,13 +6,13 @@ let menuNo = 1
 let isRecording = false
 
 function downloadImage() {
-    var print = document.querySelectorAll('container')
-    
+    var print = document.getElementById('box')
+
     html2canvas(print, {
         scale: window.devicePixelRatio,
-        /*ignoreElements: function (element) {
+        ignoreElements: function (element) {
             return (element.classList.contains("container"))
-        }*/
+        }
     }).then(function(canvas) {
         const base64image = canvas.toDataURL("image/png");
         var anchor = document.createElement('a');
@@ -47,11 +47,28 @@ async function stop() {
     document.body.appendChild(node)
 }
 
-async function recordScreen() {
+/* async function recordScreen() {
     return await navigator.mediaDevices.getDisplayMedia({
         audio: true,
-        video: {mediaSource: "screen"}
+        video: {mediaSource: "screen"},
     })
+} */
+
+async function recordScreen() {
+    try {
+        const stream = await navigator.mediaDevices.getDisplayMedia({
+            audio: {
+                mediaSource: 'audio',
+            },
+            video: {
+                mediaSource: 'screen',
+            },
+        });
+
+        return stream;
+    } catch (error) {
+        console.error('Error accessing screen and audio:', error);
+    }
 }
 
 function saveFile(recordedChunks) {
@@ -63,7 +80,7 @@ function saveFile(recordedChunks) {
     let filename = 'myComposition'
     let downloadLink = document.createElement('a')
     downloadLink.href = URL.createObjectURL(blob)
-    downloadLink.download = `${filename}.webm`
+    downloadLink.download = `${filename}.mp4`
 
     document.body.appendChild(downloadLink)
     downloadLink.click()
@@ -230,8 +247,10 @@ function handleMenuOptions() {
 
         if (isRecording) {
             start()
+            document.getElementById('recording-container').style.border = '7px solid red'
         } else {
             stop()
+            document.getElementById('recording-container').style.border = 'none'
         }
     })
 
