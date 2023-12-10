@@ -1,3 +1,13 @@
+let positionArray = new Array(7);
+//add a X and Y position to each position of the array
+positionArray[0] = {x: 30, y: 70};
+positionArray[1] = {x: 30, y: 350};
+positionArray[2] = {x: 400, y: 200};
+positionArray[3] = {x: 300, y: 0};
+positionArray[4] = {x: 1200, y: 70};
+positionArray[5] = {x: 1200, y: 350};
+positionArray[6] = {x: 900, y: 300};
+    
 function addTangramPieces() {
     // Create box
     const box = document.createElement('div')
@@ -16,9 +26,9 @@ function addTangramPieces() {
         piece.src = `../tangram_pieces/p${i+1}.svg`
 
         // Set random position within the visible screen area
-        const randomPosition = getRandomPosition();
-        container.style.left = randomPosition.x + 'px';
-        container.style.top = randomPosition.y + 'px';
+        //const randomPosition = getRandomPosition();
+        container.style.left = positionArray[i].x + 'px';
+        container.style.top = positionArray[i].y + 'px';
 
         container.appendChild(piece)
         box.appendChild(container)
@@ -31,8 +41,8 @@ function getRandomPosition() {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
 
-    const randomX = Math.floor(Math.random() * (screenWidth - 50)); // Adjust as needed
-    const randomY = Math.floor(Math.random() * (screenHeight - 50)); // Adjust as needed
+    const randomX = Math.floor(Math.random() * (screenWidth - 60)); // Adjust as needed
+    const randomY = Math.floor(Math.random() * (screenHeight - 60)); // Adjust as needed
 
     return { x: randomX, y: randomY };
 }

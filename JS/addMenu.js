@@ -6,13 +6,13 @@ let menuNo = 1
 let isRecording = false
 
 function downloadImage() {
-    var print = document.getElementById('box')
-
+    var print = document.querySelectorAll('container')
+    
     html2canvas(print, {
         scale: window.devicePixelRatio,
-        ignoreElements: function (element) {
+        /*ignoreElements: function (element) {
             return (element.classList.contains("container"))
-        }
+        }*/
     }).then(function(canvas) {
         const base64image = canvas.toDataURL("image/png");
         var anchor = document.createElement('a');
