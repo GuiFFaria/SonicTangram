@@ -258,8 +258,8 @@ transition: transform 0.3s ease-in-out;
     position: relative;
     max-width: 100%;
     z-index: 0;
-    width: 15vw;
-    height: 15vw;
+    /* width: 15vw;
+    height: 15vw; */
 }
 
 .tangraminicial{

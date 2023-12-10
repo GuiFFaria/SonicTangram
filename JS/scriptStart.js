@@ -1,3 +1,5 @@
+let pieceSize = [[25, 25],[15, 15],[15, 15],[23, 18],[25, 25],[15, 15], [15, 15]]
+
 function addTangramPieces() {
     //create box
     const box = document.createElement('div')
@@ -8,6 +10,8 @@ function addTangramPieces() {
         piece.classList.add('shape', 'tangraminicial')
         piece.setAttribute('id', `piece${i+1}`)
         piece.src = `../tangram_pieces/p${i+1}.svg`
+        piece.style.width = `${pieceSize[i][0]}vw`
+        piece.style.height = `${pieceSize[i][1]}vw`
         box.appendChild(piece)
         
     }
