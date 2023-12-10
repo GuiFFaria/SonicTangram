@@ -44,7 +44,7 @@ function preload() {
 
 function setup() {
   
-  melody.setVolume(0.5, 1);
+  melody.setVolume(0.2, 1);
   melody.loop();
 
 }
@@ -81,7 +81,7 @@ function mousepressed1() {
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds1[rand].setVolume(0.1);
+  sounds1[rand].setVolume(1);
   sounds1[rand].loop();
 }
 
@@ -90,7 +90,7 @@ function mousepressed2() {
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds2[rand].setVolume(0.1);
+  sounds2[rand].setVolume(1);
   sounds2[rand].loop();
 }
 
@@ -99,7 +99,7 @@ function mousepressed3() {
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds3[rand].setVolume(0.1);
+  sounds3[rand].setVolume(1);
   sounds3[rand].loop();
 }
 
@@ -108,7 +108,7 @@ function mousepressed4() {
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds4[rand].setVolume(0.1);
+  sounds4[rand].setVolume(1);
   sounds4[rand].loop();
 }
 
@@ -117,7 +117,7 @@ function mousepressed5() {
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds5[rand].setVolume(0.1);
+  sounds5[rand].setVolume(1);
   sounds5[rand].loop();
 }
 
@@ -126,7 +126,7 @@ function mousepressed6() {
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds6[rand].setVolume(0.1);
+  sounds6[rand].setVolume(1);
   sounds6[rand].loop();
 }
 
@@ -135,7 +135,7 @@ function mousepressed7() {
   rand = Math.floor(Math.random() * 3);
 
   console.log(rand);
-  sounds7[rand].setVolume(0.1);
+  sounds7[rand].setVolume(1);
   sounds7[rand].loop();
 }
 
