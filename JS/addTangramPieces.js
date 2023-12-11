@@ -1,3 +1,4 @@
+let pieceSize = [[20, 20],[10, 10],[10, 10],[18, 13],[20, 20],[10, 10], [10, 10]]
 let positionArray = new Array(7);
 //add a X and Y position to each position of the array
 positionArray[0] = {x: 30, y: 70};
@@ -7,7 +8,14 @@ positionArray[3] = {x: 300, y: 0};
 positionArray[4] = {x: 1200, y: 70};
 positionArray[5] = {x: 1200, y: 350};
 positionArray[6] = {x: 900, y: 300};
-    
+
+
+console.log(pieceSize)
+console.log(pieceSize[0])
+console.log(pieceSize[0][0])
+console.log(pieceSize[0][1])
+
+
 function addTangramPieces() {
     // Create box
     const box = document.createElement('div')
@@ -24,7 +32,8 @@ function addTangramPieces() {
         piece.classList.add('shape', 'prevent-select', 'tangram-piece')
         piece.setAttribute('id', `piece${i+1}`)
         piece.src = `../tangram_pieces/p${i+1}.svg`
-
+        piece.style.width = `${pieceSize[i][0]}vw`
+        piece.style.height = `${pieceSize[i][1]}vw`
         // Set random position within the visible screen area
         //const randomPosition = getRandomPosition();
         container.style.left = positionArray[i].x + 'px';

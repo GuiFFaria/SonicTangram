@@ -1,10 +1,12 @@
 let quotes = [  "I AM A CAGE IN SEARCH OF A BIRD",  "THE COSMOS IS WITHIN US. WE ARE MADE OF STAR-STUFF. WE ARE A WAY FOR THE UNIVERSE TO KNOW ITSELF",  "CATS ARE LIKE MUSIC. IT'S FOOLISH TO TRY TO EXPLAIN THEIR WORTH TO THOSE WHO DON'T APPRECIATE THEM",  "THE SEA, ONCE IT CASTS ITS SPELL, HOLDS ONE IN ITS NET OF WONDER FOREVER",  "THE MORE ABSTRACT IS FORM, THE MORE CLEAR AND DIRECT ITS APPEAL.",  "NUMBERS HAVE LIFE; THEY'RE NOT JUST SYMBOLS ON PAPER",  "WITHOUT MUSIC, LIFE WOULD BE A MISTAKE",  "MUSICAL INSTRUMENTS ARE EXTENSIONS OF WHO WE ARE",  "I CALL ARCHITECTURE FROZEN MUSIC",  "UNTIL ONE HAS LOVED AN ANIMAL, A PART OF ONE'S SOUL REMAINS UNAWAKENED",  "THE ALPHABET IS THE SCIENCE AND ART OF CONSTRUCTING AND USING LETTERS",  "KEEP YOUR EYES ON THE STARS, AND YOUR FEET ON THE GROUND",  "A ROOM WITHOUT BOOKS IS LIKE A BODY WITHOUT A SOUL",  "THE COMPUTER WAS AN INVENTION WAITING TO BE MADE",  "TO LOVE AND BE LOVED IS TO FEEL THE SUN FROM BOTH SIDES",]
-
+let piecesSize = [[20, 20],[10, 10],[10, 10],[18, 13],[20, 20],[10, 10], [10, 10]]
 var i = 0
 let mediaRecorder
 let menuNo = 1
 let isRecording = false
 /*
+let firstIteration = true 
+
 function downloadImage() {
     var print = document.getElementById('box')
 
@@ -243,9 +245,15 @@ function handleMenuOptions() {
             for (let i = 0; i < 7; i++) {
                 const piece = document.getElementById(`piece${i+1}`)
                 piece.src = `../tangram_pieces/p${i+1}_2.svg`
+                if (firstIteration) {
+                    console.log("firstIteration")
+                    piece.style.width = `${piecesSize[i][0]}vw`
+                    piece.style.height = `${piecesSize[i][1]}vw`
+                }
             }
 
             menuNo--
+            firstIteration = false
         } else {
             //light
 
