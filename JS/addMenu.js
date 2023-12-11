@@ -4,7 +4,7 @@ var i = 0
 let mediaRecorder
 let menuNo = 1
 let isRecording = false
-
+/*
 function downloadImage() {
     var print = document.getElementById('box')
 
@@ -22,9 +22,53 @@ function downloadImage() {
         anchor.remove();
     })
 
-    /* downloadButton.addEventListener("click", () => { */
-    /* }) */
+    /* downloadButton.addEventListener("click", () => { 
+    /* }) 
 }
+*/
+const capture = async () => {
+    try {
+        //delay de 2 segundos até começar a gravar
+        const stream = await navigator.mediaDevices.getDisplayMedia();
+        const track = stream.getVideoTracks()[0];
+
+        const imageCapture = new ImageCapture(track);
+
+        console.log(imageCapture);
+
+        //grab the last frame of the video track
+        const bitmap = await imageCapture.grabFrame();
+        console.log(bitmap);
+        
+        // Convert bitmap to data URL
+        const frame = await createImageBitmap(bitmap);
+        const canvas = document.createElement('canvas');
+        canvas.width = frame.width;
+        canvas.height = frame.height;
+        const context = canvas.getContext('2d');
+        context.drawImage(frame, 0, 0, frame.width, frame.height);
+
+        // Convert canvas content to a data URL
+        const frameDataURL = canvas.toDataURL('image/png');
+
+        // Create a link element
+        const downloadLink = document.createElement('a');
+        downloadLink.href = frameDataURL;
+        downloadLink.download = 'captured_frame.png'; // You can set the filename here
+
+        // Simulate a click to trigger the download
+        downloadLink.click();
+
+        // Cleanup
+        track.stop();
+        stream.getTracks().forEach(track => track.stop());
+    } catch (err) {
+        console.error("Error: " + err);
+    }
+};
+
+
+
 
 
 function distance(x1, y1, x2, y2) {
@@ -261,7 +305,8 @@ function handleMenuOptions() {
 
     // finish option
     finish.addEventListener("click", function(e) {
-        downloadImage()
+        //downloadImage()
+        capture()
         
     })
 
