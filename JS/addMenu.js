@@ -4,9 +4,9 @@ var i = 0
 let mediaRecorder
 let menuNo = 1
 let isRecording = false
-/*
-let firstIteration = true 
 
+let firstIteration = true 
+/*
 function downloadImage() {
     var print = document.getElementById('box')
 
@@ -56,7 +56,7 @@ const capture = async () => {
         // Create a link element
         const downloadLink = document.createElement('a');
         downloadLink.href = frameDataURL;
-        downloadLink.download = 'captured_frame.png'; // You can set the filename here
+        downloadLink.download = 'myTangram-Composition.png'; // You can set the filename here
 
         // Simulate a click to trigger the download
         downloadLink.click();
