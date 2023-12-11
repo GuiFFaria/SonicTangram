@@ -11,6 +11,7 @@ let rand;
 
 function preload() {
   melody = loadSound('../sounds/melody1.mp3');
+  melodyDark = loadSound('../sounds/darkmode2.mp3');
 
   sounds1[0] = loadSound("../sounds/P1A4.mp3");
   sounds1[1] = loadSound("../sounds/P1A5_.mp3");
@@ -45,12 +46,23 @@ function preload() {
 function setup() {
   
   melody.setVolume(0.2, 1);
-  melody.loop();
+  melodyDark.setVolume(0.2, 1);
+  melody.loop()
 
 }
 
 function draw() {
 
+
+  if (document.getElementById('mode-check').textContent == "dark") {
+    melody.stop(0)
+    melodyDark.loop()
+  }
+
+  if (document.getElementById('mode-check').textContent == "light") {
+    melodyDark.stop(0)
+    melody.loop()
+  }
 
   document.getElementById('piece1').addEventListener('mousedown', mousepressed1);
   document.getElementById('piece1').addEventListener('mouseup', mousereleased1);

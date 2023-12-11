@@ -234,7 +234,8 @@ function handleMenuOptions() {
         let icon = document.getElementById('mode')
         if (menuNo % 2 != 0) {
             //dark
-            
+            document.getElementById("mode-check").textContent = "dark"
+            console.log(document.getElementById("mode-check"))
             document.body.style.background = 'linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px, linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px, linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px, linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px, linear-gradient(90deg, #1b1b1b 10px, transparent 10px), linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424)'
             document.body.style.backgroundColor = '#131313'
             document.body.style.backgroundSize = '20px 20px'
@@ -256,9 +257,8 @@ function handleMenuOptions() {
             firstIteration = false
         } else {
             //light
-
-            console.log("dark:" + menuNo)
-            console.log("light:" + menuNo)
+            document.getElementById("mode-check").textContent = "light"
+            console.log(document.getElementById("mode-check"))
             document.body.style.backgroundColor = '#fff'
             document.body.style.backgroundImage = 'linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),linear-gradient(#eee .1em, transparent .1em)'
             document.body.style.backgroundSize = '100% 1.2em'
@@ -323,7 +323,7 @@ function handleMenuOptions() {
 
 
 
-
+document.getElementById("mode-check").textContent = "light"
 createMenu()
 expandMenu()
 handleMenuOptions()
